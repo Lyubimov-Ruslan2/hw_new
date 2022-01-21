@@ -1,8 +1,8 @@
+.search-area {
+  margin-left: 120px;
+}
+
 .inp {
-  left: 0%;
-  right: 0%;
-  top: 0%;
-  bottom: 0%;
   margin-top: 50px;
   background: rgba(50, 50, 50, 0.8);
   mix-blend-mode: normal;
@@ -18,20 +18,13 @@
   line-height: 24px;
 
   color: #ffffff;
-  margin-top: 38px;
-  margin-bottom: 151px;
-  margin-left: 120px;
+
+  margin: 0;
 }
 
 .btn2 {
-  margin-left: 14px;
-  margin-top: 38px;
-  margin-bottom: 151px;
+  margin: 0px 0px 0px 14px;
   cursor: pointer;
-  left: 0%;
-  right: 0%;
-  top: 0%;
-  bottom: 0%;
   width: 233px;
   height: 57px;
   background: #f65261;
@@ -39,12 +32,7 @@
 }
 
 .search-text {
-  height: 24px;
-  left: 31.76%;
-  right: 31.33%;
-  top: calc(50% - 24px / 2 + 1.5px);
-
-  font-family: Montserrat;
+  font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;

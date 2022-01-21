@@ -17,7 +17,7 @@ class SearchBar extends React.Component {
   };
   render() {
     return (
-      <>
+      <div className="search-area">
         <input
           type="search"
           placeholder="What do you want to watch?"
@@ -27,7 +27,7 @@ class SearchBar extends React.Component {
         <button className="btn2">
           <div className="search-text">Search</div>
         </button>
-      </>
+      </div>
     );
   }
 }

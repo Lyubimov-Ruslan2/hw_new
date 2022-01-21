@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./movie.styles.css";
 
-const Movie = ({ img, title, year, genre, key }) => {
+const Movie = ({ img, title, year, genre, id }) => {
   return (
-    <div key={key} className="movie-about">
-      <img src={img} alt={`${(key = { key })}`} />
+    <div id={id} className="movie-about">
+      <img src={img} alt={`${(id = { id })}`} />
       <div className="about">
         <p>{title}</p>
         <button className="btn-about">{year}</button>
@@ -25,7 +25,7 @@ Movie.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   year: PropTypes.number.isRequired,
-  key: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default Movie;

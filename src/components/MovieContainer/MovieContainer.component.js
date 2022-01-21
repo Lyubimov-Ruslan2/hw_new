@@ -7,63 +7,67 @@ import logo3 from "../../img/killbill.png";
 import logo4 from "../../img/Avengers.png";
 import logo5 from "../../img/Inception.png";
 import logo6 from "../../img/Dogs.png";
-
 let movies = [
   {
     title: "Pulp Fiction",
     img: logo1,
     year: 2004,
     genre: "Action & Adventure",
-    key: "asdaf",
+    id: "asdaf",
   },
   {
     title: "Bohemian Rhapsody",
     img: logo2,
     year: 2003,
     genre: "Drama, Biography, Music",
-    key: "asdaffs",
+    id: "asdaffs",
   },
   {
     title: "Kill Bill: Vol 2",
     img: logo3,
     year: 1994,
     genre: "Oscar winning Movie",
-    key: "asdafwq",
+    id: "asdafwq",
   },
   {
     title: "Avengers: War of Infinity",
     img: logo4,
     year: 2004,
     genre: "Action & Adventure",
-    key: "asdafuit",
+    id: "asdafuit",
   },
   {
     title: "Inception",
     img: logo5,
     year: 2003,
     genre: "Action & Adventure",
-    key: "asdafcasd",
+    id: "asdafcasd",
   },
   {
     title: "Reservoir dogs",
     img: logo6,
     year: 1994,
     genre: "Oscar winning Movie",
-    key: "asdafyluyl",
+    id: "asdafyluyl",
   },
 ];
-
 const MovieContainer = () => {
   return (
     <>
       <p className="found">{movies.length} movies found</p>
       <div className="movie-list">
-        {movies.map(({ title, img, year, genre, key }) => (
-          <Movie title={title} img={img} year={year} genre={genre} key={key} />
+        {movies.map(({ title, img, year, genre, id }) => (
+          <Movie
+            title={title}
+            img={img}
+            year={year}
+            genre={genre}
+            key={id}
+            id={id}
+          />
         ))}
       </div>
     </>
   );
 };
-
 export default MovieContainer;

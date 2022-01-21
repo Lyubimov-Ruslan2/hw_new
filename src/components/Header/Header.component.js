@@ -9,7 +9,7 @@ const Header = (props) => {
   };
   return (
     <header>
-      <div style={styledCom} class="image">
+      <div style={styledCom} className="image">
         <div className="flex-items">
           <p className="logo">netflixroulette</p>
           <button className="btn">+ add movie</button>
