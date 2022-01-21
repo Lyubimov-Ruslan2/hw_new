@@ -1,16 +1,26 @@
-import React from "react";
-import "./ErrorBoundary.styles.css";
+import React, { Component } from "react";
 
-function ErrorBoundary(props) {
-  const ErrText = () => (
-    <h2>
-      Oops, something went wrong... We are doing our best to fix the issue
-    </h2>
-  );
+class ErrorBoundary extends Component {
+  constructor(props) {
+    super(props);
 
-  let isOk = true;
+    this.state = {
+      hasError: false,
+    };
+  }
 
-  return <>{isOk ? props.children : <ErrText />}</>;
+  static getDerivedStateFromError(error) {
+    return {
+      hasError: true,
+    };
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <h1>Something went wrong</h1>;
+    }
+    return this.props.children;
+  }
 }
 
 export default ErrorBoundary;
