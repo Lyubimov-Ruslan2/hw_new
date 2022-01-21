@@ -1,0 +1,61 @@
+header {
+  height: 396px;
+}
+
+.image {
+  position: relative;
+  width: 100%;
+  height: 396px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.flex-items {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0px;
+}
+
+.logo {
+  width: 151px;
+  height: 24px;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 24px;
+  color: #f65261;
+  margin-top: 20px;
+  margin-left: 60px;
+}
+
+.btn {
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: right;
+  text-transform: uppercase;
+  color: #f65261;
+  background: rgba(96, 96, 96, 0.68);
+  border-radius: 4px;
+  margin-top: 20px;
+  margin-right: 56px;
+}
+
+h1 {
+  width: 420px;
+  height: 49px;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 40px;
+  line-height: 49px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-left: 120px;
+  color: #ffffff;
+  margin-top: 57px;
+}

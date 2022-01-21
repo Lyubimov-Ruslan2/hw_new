@@ -1,0 +1,56 @@
+.inp {
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  margin-top: 50px;
+  background: rgba(50, 50, 50, 0.8);
+  mix-blend-mode: normal;
+  opacity: 0.7;
+  border-radius: 4px;
+  height: 57px;
+  width: 713px;
+
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #ffffff;
+  margin-top: 38px;
+  margin-bottom: 151px;
+  margin-left: 120px;
+}
+
+.btn2 {
+  margin-left: 14px;
+  margin-top: 38px;
+  margin-bottom: 151px;
+  cursor: pointer;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  width: 233px;
+  height: 57px;
+  background: #f65261;
+  border-radius: 4px;
+}
+
+.search-text {
+  height: 24px;
+  left: 31.76%;
+  right: 31.33%;
+  top: calc(50% - 24px / 2 + 1.5px);
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  text-transform: uppercase;
+
+  color: #ffffff;
+}

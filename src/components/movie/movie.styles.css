@@ -1,0 +1,50 @@
+.about {
+  display: flex;
+  justify-content: space-between;
+  width: 322px;
+  margin-top: 0;
+  height: 28px;
+}
+
+.movie-about {
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 19px;
+  line-height: 1px;
+  /* identical to box height */
+
+  color: #ffffff;
+}
+
+.btn-about {
+  width: 66px;
+  height: 26px;
+  mix-blend-mode: normal;
+  opacity: 0.5;
+  border: 1px solid #979797;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: #232323;
+  color: #ffffff;
+}
+
+.genre-about {
+  width: 323px;
+  height: 17px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #ffffff;
+
+  mix-blend-mode: normal;
+  opacity: 0.5;
+}
+
+img {
+  width: 322px;
+  height: 455px;
+  margin-bottom: 22px;
+}
