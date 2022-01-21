@@ -3,14 +3,17 @@ import Header from "./Header/Header.component";
 import Footer from "./footter/footer.component";
 import ToggleGenre from "./Togglegenre/Togglegenre";
 import MovieContainer from "./MovieContainer/MovieContainer.component";
-// New File,
+import ErrorBoundary from "./ErrorBound/ErrorBoundary.component";
+
 class App extends Component {
   render() {
     return (
       <div>
         <Header />
         <ToggleGenre />
-        <MovieContainer />
+        <ErrorBoundary>
+          <MovieContainer />
+        </ErrorBoundary>
         <Footer>netflixroulette</Footer>
       </div>
     );
