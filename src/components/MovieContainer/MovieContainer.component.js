@@ -7,6 +7,7 @@ import logo3 from "../../img/killbill.png";
 import logo4 from "../../img/Avengers.png";
 import logo5 from "../../img/Inception.png";
 import logo6 from "../../img/Dogs.png";
+
 let movies = [
   {
     title: "Pulp Fiction",
@@ -51,23 +52,25 @@ let movies = [
     id: "asdafyluyl",
   },
 ];
-const MovieContainer = () => {
-  return (
-    <>
-      <p className="found">{movies.length} movies found</p>
-      <div className="movie-list">
-        {movies.map(({ title, img, year, genre, id }) => (
-          <Movie
-            title={title}
-            img={img}
-            year={year}
-            genre={genre}
-            key={id}
-            id={id}
-          />
-        ))}
-      </div>
-    </>
-  );
-};
+class MovieContainer extends React.Component {
+  render() {
+    return (
+      <>
+        <p className="found">{movies.length} movies found</p>
+        <div className="movie-list">
+          {movies.map(({ title, img, year, genre, id }) => (
+            <Movie
+              title={title}
+              img={img}
+              year={year}
+              genre={genre}
+              key={id}
+              id={id}
+            />
+          ))}
+        </div>
+      </>
+    );
+  }
+}
 export default MovieContainer;

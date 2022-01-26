@@ -22,7 +22,7 @@ header {
   height: 24px;
   font-family: "Montserrat", sans-serif;
   font-style: normal;
-  font-weight: 900;
+  font-weight: 400;
   font-size: 20px;
   line-height: 24px;
   color: #f65261;
@@ -43,6 +43,12 @@ header {
   border-radius: 4px;
   margin-top: 20px;
   margin-right: 56px;
+  border: none;
+  transition: transform 0.2s linear;
+}
+
+.btn:active {
+  transform: scale(0.9);
 }
 
 h1 {
@@ -58,4 +64,8 @@ h1 {
   margin-left: 120px;
   color: #ffffff;
   margin-top: 57px;
+}
+
+.span-text {
+  font-weight: 900;
 }

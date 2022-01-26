@@ -1,0 +1,78 @@
+.POPUP {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #424242;
+  opacity: 0.8;
+  z-index: 5;
+}
+
+.POPUP-INFO {
+  margin: 200px 112px 267px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #232323;
+  width: 976px;
+  height: 600px;
+  padding: 50px 60px 60px;
+  position: relative;
+  display: border-box;
+}
+
+.POPUP-INFO h1 {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 40px;
+  line-height: 49px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 13px 670px 38px 57px;
+
+  color: #ffffff;
+}
+
+.cls-btn {
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 30px;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+.POPUP-INFO label {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  /* identical to box height */
+
+  letter-spacing: 0.888889px;
+  text-transform: uppercase;
+
+  color: #f65261;
+
+  mix-blend-mode: normal;
+  opacity: 0.8;
+}
+
+.POPUP-INFO .form {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 30px;
+}
+
+.POPUP-INFO .form div {
+  display: flex;
+  flex-direction: column;
+}

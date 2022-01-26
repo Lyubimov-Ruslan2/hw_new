@@ -11,7 +11,9 @@ const Header = (props) => {
     <header>
       <div style={styledCom} className="image">
         <div className="flex-items">
-          <p className="logo">netflixroulette</p>
+          <p className="logo">
+            <span className="span-text">netflix</span>roulette
+          </p>
           <button className="btn">+ add movie</button>
         </div>
         <h1>FIND YOUR MOViE</h1>

@@ -27,8 +27,15 @@
   cursor: pointer;
   width: 233px;
   height: 57px;
-  background: #f65261;
+  background: rgba(246, 82, 97, 0.8);
   border-radius: 4px;
+  border: none;
+
+  transition: transform 0.2s linear;
+}
+
+.btn2:active {
+  transform: scale(0.9);
 }
 
 .search-text {

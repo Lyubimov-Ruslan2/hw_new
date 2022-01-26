@@ -4,6 +4,7 @@ import Footer from "./footter/footer.component";
 import ToggleGenre from "./Togglegenre/Togglegenre";
 import MovieContainer from "./MovieContainer/MovieContainer.component";
 import ErrorBoundary from "./ErrorBound/ErrorBoundary.component";
+import AddMovie from "./addMoviePopUp/AddMovie";
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
           <MovieContainer />
         </ErrorBoundary>
         <Footer>netflixroulette</Footer>
+        <AddMovie />
       </div>
     );
   }

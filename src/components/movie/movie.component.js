@@ -1,19 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./movie.styles.css";
+import editBtn from "../../img/edit.svg";
 
-const Movie = ({ img, title, year, genre, id }) => {
-  return (
-    <div id={id} className="movie-about">
-      <img src={img} alt={`${(id = { id })}`} />
-      <div className="about">
-        <p>{title}</p>
-        <button className="btn-about">{year}</button>
+class Movie extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    const { img, title, year, genre, id } = this.props;
+    return (
+      <div id={id} className="movie-about">
+        <img src={img} />
+        <div className="about">
+          <p>{title}</p>
+          <button className="btn-about">{year}</button>
+        </div>
+        <p className="genre-about">{genre}</p>
+        <img className="edit" src={editBtn} alt="edit" />
       </div>
-      <p className="genre-about">{genre}</p>
-    </div>
-  );
-};
+    );
+  }
+}
 
 Movie.defaultProps = {
   title: "Amazing movie!",

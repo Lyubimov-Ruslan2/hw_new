@@ -7,12 +7,12 @@
 }
 
 .movie-about {
-  cursor: pointer;
   font-family: "Montserrat", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 19px;
   line-height: 1px;
+  position: relative;
   /* identical to box height */
 
   color: #ffffff;
@@ -44,7 +44,19 @@
 }
 
 img {
+  cursor: pointer;
   width: 322px;
   height: 455px;
   margin-bottom: 22px;
+}
+
+.edit {
+  opacity: 1;
+  position: absolute;
+
+  width: 36px;
+  height: 36px;
+  top: 15px;
+  right: 115px;
+  cursor: pointer;
 }
