@@ -22,6 +22,43 @@
   padding: 50px 60px 90px;
   position: relative;
   display: border-box;
+  top: 30px;
+}
+
+.POPUP-INFO-Delete {
+  background-color: #232323;
+  width: 650px;
+  height: 290px;
+  padding: 50px 30px 30px;
+  position: absolute;
+  top: 90px;
+  display: border-box;
+  z-index: 5;
+}
+
+.POPUP-INFO-Delete h1 {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 40px;
+  line-height: 49px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 20px 287px 37px 40px;
+
+  color: #ffffff;
+}
+
+.POPUP-INFO-Delete p {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+  margin-left: 40px;
+  margin-bottom: 100px;
+
+  color: #ffffff;
 }
 
 .POPUP-INFO h1 {
