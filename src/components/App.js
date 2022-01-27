@@ -9,6 +9,9 @@ import EditMovie from "./PopUps/EditMovie";
 import DeleteMovie from "./PopUps/DeleteMovie";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <div>
@@ -18,7 +21,6 @@ class App extends Component {
           <MovieContainer />
         </ErrorBoundary>
         <Footer>netflixroulette</Footer>
-        <AddMovie />
       </div>
     );
   }
