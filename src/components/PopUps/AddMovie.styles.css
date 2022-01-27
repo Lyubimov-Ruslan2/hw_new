@@ -162,6 +162,9 @@ select {
 .POPUP-INFO .form textarea {
   height: 70px;
 }
+.POPUP-INFO .form textarea:focus {
+  outline: 1px solid #f65261;
+}
 
 .btns-for-add {
   display: flex;

@@ -74,7 +74,7 @@
   right: 115px;
   background: rgb(35, 35, 35);
   width: 150px;
-  height: 70px;
+  height: 80px;
   z-index: 2;
   padding: 10px 15px 10px 0px;
   border-radius: 4px;
@@ -82,7 +82,7 @@
 
 .pops-menu .cl {
   position: absolute;
-  top: 5px;
+  top: 0px;
   right: 5px;
   cursor: pointer;
   color: #ffffff;
@@ -120,4 +120,9 @@
 
 .pops-menu .last {
   margin-top: 0px;
+  padding-bottom: 5px;
+}
+
+.pops-menu .first {
+  padding-top: 5px;
 }

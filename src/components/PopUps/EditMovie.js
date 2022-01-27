@@ -16,7 +16,11 @@ class EditMovie extends React.PureComponent {
               <div className="form">
                 <div>
                   <label htmlFor="form-title">Title</label>
-                  <input className="form-title" type="text" />
+                  <input
+                    className="form-title"
+                    type="text"
+                    value={this.props.title}
+                  />
                 </div>
                 <div>
                   <label htmlFor="form-release-date">Release Date</label>

@@ -57,6 +57,7 @@ class Movie extends React.Component {
             <EditMovie
               trigger={this.state.isEditMovieOpen}
               handler={this.handleMovieEdit}
+              title={title}
             />
             <p onClick={this.handleMovieDelete} className="last">
               Delete
