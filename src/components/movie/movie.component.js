@@ -18,9 +18,6 @@ class Movie extends React.Component {
     this.handleMovieIcon = this.handleMovieIcon.bind(this);
   }
 
-  componentDidUpdate() {
-    console.log("Edit bar was clicked");
-  }
   handleMovieEdit = () => {
     this.setState({ isEditMovieOpen: !this.state.isEditMovieOpen });
   };
