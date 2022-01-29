@@ -51,6 +51,10 @@ header {
   transform: scale(0.9);
 }
 
+.span-text {
+  font-weight: 900;
+}
+
 h1 {
   width: 420px;
   height: 49px;
@@ -64,8 +68,5 @@ h1 {
   margin-left: 120px;
   color: #ffffff;
   margin-top: 57px;
-}
-
-.span-text {
-  font-weight: 900;
+  margin-left: 15px;
 }

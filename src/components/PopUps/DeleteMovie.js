@@ -3,6 +3,13 @@ import "./AddMovie.styles.css";
 import arrow from "../../img/Arrowforgenre.svg";
 
 class DeleteMovie extends React.PureComponent {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidUpdate() {
+    console.log("Delete button was clicked");
+  }
   render() {
     return (
       <>

@@ -18,6 +18,7 @@ class SearchBar extends React.Component {
   render() {
     return (
       <div className="search-area">
+        <h1>Find your movie</h1>
         <input
           type="search"
           placeholder="What do you want to watch?"

@@ -7,6 +7,10 @@ class AddMovie extends React.PureComponent {
     super(props);
   }
 
+  componentDidUpdate() {
+    console.log("Add button was clicked");
+  }
+
   render() {
     return (
       <>
@@ -64,7 +68,7 @@ class AddMovie extends React.PureComponent {
                   />
                 </div>
                 <div>
-                  <label htmlFor="form-movie-overview">OVERVIEW</label>
+                  <label htmlFor="form-movie-overview">overview</label>
                   <textarea
                     className="form-movie-overview"
                     placeholder="Movie description"
@@ -72,8 +76,8 @@ class AddMovie extends React.PureComponent {
                 </div>
               </div>
               <div className="btns-for-add">
-                <button className="btns-1">RESET</button>
-                <button className="btns-2">SUBMIT</button>
+                <button className="btns-1">reset</button>
+                <button className="btns-2">submit</button>
               </div>
             </div>
           </div>

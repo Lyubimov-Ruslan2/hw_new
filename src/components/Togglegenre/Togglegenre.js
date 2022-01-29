@@ -22,7 +22,7 @@ function ToggleGenre() {
         </a>
       </nav>
       <div className="Sorting">
-        <p className="Sorting-items">Sort BY</p>
+        <p className="Sorting-items">Sort by</p>
         <p className="Sorting-items">Release date</p>
       </div>
     </div>

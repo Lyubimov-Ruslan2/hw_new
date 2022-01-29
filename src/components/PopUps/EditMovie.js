@@ -3,6 +3,14 @@ import "./AddMovie.styles.css";
 import arrow from "../../img/Arrowforgenre.svg";
 
 class EditMovie extends React.PureComponent {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidUpdate() {
+    console.log("Edit button was clicked");
+  }
+
   render() {
     return (
       <>
@@ -16,11 +24,7 @@ class EditMovie extends React.PureComponent {
               <div className="form">
                 <div>
                   <label htmlFor="form-title">Title</label>
-                  <input
-                    className="form-title"
-                    type="text"
-                    value={this.props.title}
-                  />
+                  <input className="form-title" type="text" />
                 </div>
                 <div>
                   <label htmlFor="form-release-date">Release Date</label>
@@ -64,7 +68,7 @@ class EditMovie extends React.PureComponent {
                   />
                 </div>
                 <div>
-                  <label htmlFor="form-movie-overview">OVERVIEW</label>
+                  <label htmlFor="form-movie-overview">overview</label>
                   <textarea
                     className="form-movie-overview"
                     placeholder="Movie description"
@@ -72,8 +76,8 @@ class EditMovie extends React.PureComponent {
                 </div>
               </div>
               <div className="btns-for-add">
-                <button className="btns-1">RESET</button>
-                <button className="btns-2">SUBMIT</button>
+                <button className="btns-1">reset</button>
+                <button className="btns-2">submit</button>
               </div>
             </div>
           </div>

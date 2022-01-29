@@ -35,7 +35,7 @@ class Header extends React.Component {
               handler={this.handleMoviePOPUp.bind(this)}
             />
           </div>
-          <h1>FIND YOUR MOViE</h1>
+
           <SearchBar />
         </div>
       </header>
