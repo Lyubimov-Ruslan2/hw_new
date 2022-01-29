@@ -7,6 +7,7 @@ import ErrorBoundary from "./ErrorBound/ErrorBoundary.component";
 import AddMovie from "./PopUps/AddMovie";
 import EditMovie from "./PopUps/EditMovie";
 import DeleteMovie from "./PopUps/DeleteMovie";
+import "../index.css";
 
 class App extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="container">
         <Header />
         <ToggleGenre />
         <ErrorBoundary>

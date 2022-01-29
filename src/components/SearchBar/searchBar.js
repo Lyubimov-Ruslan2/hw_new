@@ -25,9 +25,7 @@ class SearchBar extends React.Component {
           className="inp"
           onChange={this.handleChange}
         />
-        <button className="btn2">
-          <div className="search-text">Search</div>
-        </button>
+        <button className="btn2">Search</button>
       </div>
     );
   }
