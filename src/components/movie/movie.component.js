@@ -5,7 +5,7 @@ import editBtn from "../../img/edit.svg";
 import DeleteMovie from "../PopUps/DeleteMovie";
 import EditMovie from "../PopUps/EditMovie";
 
-const Movie = ({ img, title, year, genre, id }) => {
+const Movie = ({ img, title, year, genre, id, handler }) => {
   const [isEditMovieOpen, setEditMovieOpen] = useState(false);
   const [isDeleteMovieOpen, setDeleteMovieOpen] = useState(false);
   const [isIconOpen, setIconOpen] = useState(false);
@@ -28,7 +28,7 @@ const Movie = ({ img, title, year, genre, id }) => {
   }, [isEditMovieOpen, isIconOpen, isDeleteMovieOpen]);
 
   return (
-    <div id={id} className="movie-about">
+    <div id={id} onClick={handler} className="movie-about">
       <img className="img-edit" src={img} />
       <div className="about">
         <p>{title}</p>

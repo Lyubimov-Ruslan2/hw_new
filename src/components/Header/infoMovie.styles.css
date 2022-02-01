@@ -1,5 +1,5 @@
 .description-movie {
-  height: 396px;
+  height: 500px;
   margin: 27px 40px 0px;
   font-family: "Montserrat", sans-serif;
   font-style: normal;
@@ -66,4 +66,8 @@
   font-size: 25px;
   line-height: 29px;
   margin-bottom: 25px;
+}
+
+.description-info img {
+  height: 400px;
 }

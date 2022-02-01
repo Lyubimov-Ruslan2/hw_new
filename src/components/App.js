@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Header from "./Header/Header.component";
 import Footer from "./footter/footer.component";
 import ToggleGenre from "./Togglegenre/Togglegenre";
@@ -11,15 +11,19 @@ import InfoMovie from "./Header/infoMovie";
 import "../index.css";
 
 const App = (props) => {
+  const [isDescriptionOpen, setDescriptionOpen] = useState(false);
+
+  const handleDescription = () => {
+    setDescriptionOpen(!isDescriptionOpen);
+  };
   return (
     <div className="container">
-      <Header />
+      {isDescriptionOpen ? <InfoMovie /> : <Header />}
       <ToggleGenre />
       <ErrorBoundary>
-        <MovieContainer />
+        <MovieContainer handler={handleDescription} />
       </ErrorBoundary>
       <Footer>netflixroulette</Footer>
-      <InfoMovie />
     </div>
   );
 };

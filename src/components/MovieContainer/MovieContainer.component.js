@@ -65,6 +65,7 @@ const MovieContainer = (props) => {
             genre={genre}
             key={id}
             id={id}
+            handler={props.handler}
           />
         ))}
       </div>

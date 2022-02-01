@@ -3,7 +3,7 @@ import searchButton from "./img/SearchButton.svg";
 import pulpf from "../../img/pulpfiction.png";
 import "./infoMovie.styles.css";
 
-const InfoMovie = (props) => {
+const InfoMovie = ({ title, img, year, genre, description }) => {
   return (
     <>
       <div className="description-movie">
