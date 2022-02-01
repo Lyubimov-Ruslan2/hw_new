@@ -21,12 +21,11 @@ const Movie = ({ img, title, year, genre, id }) => {
     setIconOpen(!isIconOpen);
   };
 
-  // useEffect(() => {
-  //   if (isEditMovieOpen || isDeleteMovieOpen) {
-  //     console.log("I am working!");
-  //     setIconOpen(false);
-  //   }
-  // }, [isEditMovieOpen, isIconOpen, isDeleteMovieOpen]);
+  useEffect(() => {
+    if (isEditMovieOpen || isDeleteMovieOpen) {
+      setIconOpen(false);
+    }
+  }, [isEditMovieOpen, isIconOpen, isDeleteMovieOpen]);
 
   return (
     <div id={id} className="movie-about">
@@ -42,7 +41,7 @@ const Movie = ({ img, title, year, genre, id }) => {
         src={editBtn}
         alt="edit"
       />
-      {isIconOpen ? (
+      {isIconOpen && (
         <div className="pops-menu">
           <button onClick={handleMovieIcon} className="cl">
             x
@@ -50,20 +49,18 @@ const Movie = ({ img, title, year, genre, id }) => {
           <p className="first" onClick={handleMovieEdit}>
             Edit
           </p>
-          <EditMovie
-            trigger={isEditMovieOpen}
-            handler={handleMovieEdit}
-            title={title}
-          />
+
           <p onClick={handleMovieDelete} className="last">
             Delete
           </p>
-          <DeleteMovie
-            trigger={isDeleteMovieOpen}
-            handler={handleMovieDelete}
-          />
         </div>
-      ) : null}
+      )}
+      <EditMovie
+        trigger={isEditMovieOpen}
+        handler={handleMovieEdit}
+        title={title}
+      />
+      <DeleteMovie trigger={isDeleteMovieOpen} handler={handleMovieDelete} />
     </div>
   );
 };

@@ -7,6 +7,7 @@ import ErrorBoundary from "./ErrorBound/ErrorBoundary.component";
 import AddMovie from "./PopUps/AddMovie";
 import EditMovie from "./PopUps/EditMovie";
 import DeleteMovie from "./PopUps/DeleteMovie";
+import InfoMovie from "./Header/infoMovie";
 import "../index.css";
 
 const App = (props) => {
@@ -18,6 +19,7 @@ const App = (props) => {
         <MovieContainer />
       </ErrorBoundary>
       <Footer>netflixroulette</Footer>
+      <InfoMovie />
     </div>
   );
 };
