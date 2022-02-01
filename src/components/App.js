@@ -9,22 +9,17 @@ import EditMovie from "./PopUps/EditMovie";
 import DeleteMovie from "./PopUps/DeleteMovie";
 import "../index.css";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return (
-      <div className="container">
-        <Header />
-        <ToggleGenre />
-        <ErrorBoundary>
-          <MovieContainer />
-        </ErrorBoundary>
-        <Footer>netflixroulette</Footer>
-      </div>
-    );
-  }
-}
+const App = (props) => {
+  return (
+    <div className="container">
+      <Header />
+      <ToggleGenre />
+      <ErrorBoundary>
+        <MovieContainer />
+      </ErrorBoundary>
+      <Footer>netflixroulette</Footer>
+    </div>
+  );
+};
 
 export default App;
