@@ -4,8 +4,10 @@ import "./movie.styles.css";
 import editBtn from "../../img/edit.svg";
 import DeleteMovie from "../PopUps/DeleteMovie";
 import EditMovie from "../PopUps/EditMovie";
+import "../Header/infoMovie";
+import InfoMovie from "../Header/infoMovie";
 
-const Movie = ({ img, title, year, genre, id, handler }) => {
+const Movie = ({ img, title, year, genre, id, handler, isDescriptionOpen }) => {
   const [isEditMovieOpen, setEditMovieOpen] = useState(false);
   const [isDeleteMovieOpen, setDeleteMovieOpen] = useState(false);
   const [isIconOpen, setIconOpen] = useState(false);
@@ -29,6 +31,7 @@ const Movie = ({ img, title, year, genre, id, handler }) => {
 
   return (
     <div id={id} onClick={handler} className="movie-about">
+      {isDescriptionOpen && <InfoMovie title={title} />}
       <img className="img-edit" src={img} />
       <div className="about">
         <p>{title}</p>
@@ -64,73 +67,6 @@ const Movie = ({ img, title, year, genre, id, handler }) => {
     </div>
   );
 };
-// class Movie extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       isEditMovieOpen: false,
-//       isDeleteMovieOpen: false,
-//       isIconOpen: false,
-//     };
-//     this.handleMovieEdit = this.handleMovieEdit.bind(this);
-//     this.handleMovieDelete = this.handleMovieDelete.bind(this);
-//     this.handleMovieIcon = this.handleMovieIcon.bind(this);
-//   }
-
-//   handleMovieEdit = () => {
-//     this.setState({ isEditMovieOpen: !this.state.isEditMovieOpen });
-//   };
-
-//   handleMovieDelete = () => {
-//     this.setState({ isDeleteMovieOpen: !this.state.isDeleteMovieOpen });
-//   };
-
-//   handleMovieIcon = () => {
-//     this.setState({ isIconOpen: !this.state.isIconOpen });
-//   };
-
-//   render() {
-//     const { img, title, year, genre, id } = this.props;
-//     return (
-//       <div id={id} className="movie-about">
-//         <img className="img-edit" src={img} />
-//         <div className="about">
-//           <p>{title}</p>
-//           <button className="btn-about">{year}</button>
-//         </div>
-//         <p className="genre-about">{genre}</p>
-//         <img
-//           onClick={this.handleMovieIcon}
-//           className="edit"
-//           src={editBtn}
-//           alt="edit"
-//         />
-//         {this.state.isIconOpen ? (
-//           <div className="pops-menu">
-//             <button onClick={this.handleMovieIcon} className="cl">
-//               x
-//             </button>
-//             <p className="first" onClick={this.handleMovieEdit}>
-//               Edit
-//             </p>
-//             <EditMovie
-//               trigger={this.state.isEditMovieOpen}
-//               handler={this.handleMovieEdit}
-//               title={title}
-//             />
-//             <p onClick={this.handleMovieDelete} className="last">
-//               Delete
-//             </p>
-//             <DeleteMovie
-//               trigger={this.state.isDeleteMovieOpen}
-//               handler={this.handleMovieDelete}
-//             />
-//           </div>
-//         ) : null}
-//       </div>
-//     );
-//   }
-// }
 
 Movie.defaultProps = {
   title: "Amazing movie!",

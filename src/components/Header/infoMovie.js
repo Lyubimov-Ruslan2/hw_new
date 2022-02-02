@@ -3,7 +3,8 @@ import searchButton from "./img/SearchButton.svg";
 import pulpf from "../../img/pulpfiction.png";
 import "./infoMovie.styles.css";
 
-const InfoMovie = ({ title, img, year, genre, description }) => {
+const InfoMovie = (props) => {
+  console.log(props);
   return (
     <>
       <div className="description-movie">
@@ -14,7 +15,7 @@ const InfoMovie = ({ title, img, year, genre, description }) => {
         <div className="description-info">
           <img src={pulpf} alt="pulp" />
           <div className="description-text">
-            <h1>pulp fiction</h1>
+            <h1>PULP FICTION</h1>
             <span className="circle-rating">8.9</span>
             <p> Action & Adventure</p>
             <div className="span-group">
