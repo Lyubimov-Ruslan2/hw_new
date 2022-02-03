@@ -5,9 +5,18 @@ import editBtn from "../../img/edit.svg";
 import DeleteMovie from "../PopUps/DeleteMovie";
 import EditMovie from "../PopUps/EditMovie";
 import "../Header/infoMovie";
-import InfoMovie from "../Header/infoMovie";
 
-const Movie = ({ img, title, year, genre, id, handler, isDescriptionOpen }) => {
+const Movie = ({
+  img,
+  title,
+  year,
+  genre,
+  id,
+  handler,
+  isDescriptionOpen,
+  setMovieId,
+  setDescriptionOpen,
+}) => {
   const [isEditMovieOpen, setEditMovieOpen] = useState(false);
   const [isDeleteMovieOpen, setDeleteMovieOpen] = useState(false);
   const [isIconOpen, setIconOpen] = useState(false);
@@ -29,10 +38,14 @@ const Movie = ({ img, title, year, genre, id, handler, isDescriptionOpen }) => {
     }
   }, [isEditMovieOpen, isIconOpen, isDeleteMovieOpen]);
 
+  const handleChangeDescription = () => {
+    setMovieId(id);
+    setDescriptionOpen(true);
+  };
   return (
-    <div id={id} onClick={handler} className="movie-about">
-      {isDescriptionOpen && <InfoMovie title={title} />}
+    <div id={id} className="movie-about" onClick={handleChangeDescription}>
       <img className="img-edit" src={img} />
+
       <div className="about">
         <p>{title}</p>
         <button className="btn-about">{year}</button>

@@ -3,24 +3,31 @@ import searchButton from "./img/SearchButton.svg";
 import pulpf from "../../img/pulpfiction.png";
 import "./infoMovie.styles.css";
 
-const InfoMovie = (props) => {
-  console.log(props);
+const InfoMovie = ({ id, title, img, year, genre, handler, time }) => {
+  const TimerConverter = (str) => {
+    const time = +str;
+    const convert_hours = Math.floor(time / 60);
+    const convert_min = time % 60;
+    return `${String(convert_hours)}h ${
+      convert_min === 0 ? "" : String(convert_min) + "min"
+    }`;
+  };
   return (
     <>
-      <div className="description-movie">
+      <div id={id} className="description-movie">
         <div className="icons">
           <span>netflixroulette</span>
-          <img src={searchButton} alt="search" />
+          <img src={searchButton} onClick={handler} alt="search" />
         </div>
         <div className="description-info">
-          <img src={pulpf} alt="pulp" />
+          <img src={img} alt="pulp" />
           <div className="description-text">
-            <h1>PULP FICTION</h1>
+            <h1>{title}</h1>
             <span className="circle-rating">8.9</span>
-            <p> Action & Adventure</p>
+            <p>{genre}</p>
             <div className="span-group">
-              <span>1994</span>
-              <span>2h34min</span>
+              <span>{year}</span>
+              <span>{TimerConverter(time)}</span>
             </div>
             <p>
               Jules Winnfield (Samuel L. Jackson) and Vincent Vega (John

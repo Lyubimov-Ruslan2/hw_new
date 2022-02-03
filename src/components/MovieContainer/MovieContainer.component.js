@@ -17,6 +17,8 @@ const MovieContainer = (props) => {
             id={id}
             handler={props.handler}
             isDescriptionOpen={props.isDescriptionOpen}
+            setMovieId={props.setMovieId}
+            setDescriptionOpen={props.setDescriptionOpen}
           />
         ))}
       </div>

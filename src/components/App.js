@@ -18,6 +18,7 @@ import "../index.css";
 
 const App = (props) => {
   const [isDescriptionOpen, setDescriptionOpen] = useState(false);
+  const [movieId, setMovieId] = useState(null);
 
   const handleDescription = () => {
     setDescriptionOpen(!isDescriptionOpen);
@@ -29,6 +30,7 @@ const App = (props) => {
       img: logo1,
       year: 2004,
       genre: "Action & Adventure",
+      time: "140",
       id: "asdaf",
     },
     {
@@ -36,6 +38,7 @@ const App = (props) => {
       img: logo2,
       year: 2003,
       genre: "Drama, Biography, Music",
+      time: "130",
       id: "asdaffs",
     },
     {
@@ -43,6 +46,7 @@ const App = (props) => {
       img: logo3,
       year: 1994,
       genre: "Oscar winning Movie",
+      time: "120",
       id: "asdafwq",
     },
     {
@@ -50,6 +54,7 @@ const App = (props) => {
       img: logo4,
       year: 2004,
       genre: "Action & Adventure",
+      time: "157",
       id: "asdafuit",
     },
     {
@@ -57,6 +62,7 @@ const App = (props) => {
       img: logo5,
       year: 2003,
       genre: "Action & Adventure",
+      time: "136",
       id: "asdafcasd",
     },
     {
@@ -64,19 +70,29 @@ const App = (props) => {
       img: logo6,
       year: 1994,
       genre: "Oscar winning Movie",
+      time: "139",
       id: "asdafyluyl",
     },
   ];
-
+  const selectedMovie = movies.filter((movie) => movie.id === movieId);
   return (
     <div className="container">
-      {isDescriptionOpen ? <InfoMovie /> : <Header />}
+      {isDescriptionOpen ? (
+        selectedMovie.map(({ id, ...otherMovieInfo }) => (
+          <InfoMovie key={id} {...otherMovieInfo} handler={handleDescription} />
+        ))
+      ) : (
+        <Header />
+      )}
+
       <ToggleGenre />
       <ErrorBoundary>
         <MovieContainer
           movies={movies}
           handler={handleDescription}
           isDescriptionOpen={isDescriptionOpen}
+          setMovieId={setMovieId}
+          setDescriptionOpen={setDescriptionOpen}
         />
       </ErrorBoundary>
       <Footer>netflixroulette</Footer>

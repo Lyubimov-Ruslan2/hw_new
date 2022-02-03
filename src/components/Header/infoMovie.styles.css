@@ -10,6 +10,9 @@
   justify-content: space-between;
   margin-bottom: 24px;
 }
+.icons img {
+  cursor: pointer;
+}
 
 .description-movie span {
   color: #f65261;
@@ -54,8 +57,10 @@
 
 .description-text h1 {
   margin: 0;
+  font-size: 33px;
   letter-spacing: 1px;
   text-transform: uppercase;
+  line-height: 30px;
 }
 
 .span-group {
