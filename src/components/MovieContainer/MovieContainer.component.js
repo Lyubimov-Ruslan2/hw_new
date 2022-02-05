@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./MovieContainer.styles.css";
 import Movie from "../movie/movie.component";
 
 const MovieContainer = (props) => {
+  useEffect(() => {
+    console.log(props.movies);
+  }, [props.movies]);
+
   return (
     <>
       <p className="found">{props.movies.length} movies found</p>
+
       <div className="movie-list">
         {props.movies.map(({ title, img, year, genre, id }) => (
           <Movie

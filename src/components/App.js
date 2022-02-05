@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./Header/Header.component";
 import Footer from "./footter/footer.component";
 import ToggleGenre from "./Togglegenre/Togglegenre";
@@ -19,9 +19,21 @@ import "../index.css";
 const App = (props) => {
   const [isDescriptionOpen, setDescriptionOpen] = useState(false);
   const [movieId, setMovieId] = useState(null);
+  const [sortedMovieByYear, setSortedMovieByYear] = useState(false);
 
   const handleDescription = () => {
     setDescriptionOpen(!isDescriptionOpen);
+  };
+
+  const handleSortedByYear = () => {
+    setSortedMovieByYear(!sortedMovieByYear);
+  };
+
+  const sortedObject = (obj) => {
+    const sorted = obj.sort((a, b) => {
+      return a.year - b.year;
+    });
+    return sorted;
   };
 
   let movies = [
@@ -74,6 +86,14 @@ const App = (props) => {
       id: "asdafyluyl",
     },
   ];
+
+  useEffect(() => {
+    if (sortedMovieByYear) {
+      movies = sortedObject(movies);
+    }
+  }, [sortedMovieByYear, movies]);
+  console.log(movies);
+
   const selectedMovie = movies.filter((movie) => movie.id === movieId);
   return (
     <div className="container">
@@ -85,7 +105,7 @@ const App = (props) => {
         <Header />
       )}
 
-      <ToggleGenre />
+      <ToggleGenre handler={handleSortedByYear} />
       <ErrorBoundary>
         <MovieContainer
           movies={movies}
@@ -93,6 +113,7 @@ const App = (props) => {
           isDescriptionOpen={isDescriptionOpen}
           setMovieId={setMovieId}
           setDescriptionOpen={setDescriptionOpen}
+          sortedMovieByYear={sortedMovieByYear}
         />
       </ErrorBoundary>
       <Footer>netflixroulette</Footer>

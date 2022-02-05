@@ -1,7 +1,7 @@
 import React from "react";
 import "./ToggleGenre.styles.css";
 
-function ToggleGenre() {
+function ToggleGenre(props) {
   return (
     <div className="flex-row">
       <nav className="Navigator">
@@ -23,7 +23,10 @@ function ToggleGenre() {
       </nav>
       <div className="Sorting">
         <p className="Sorting-items">Sort by</p>
-        <p className="Sorting-items">Release date</p>
+        <p className="Sorting-items button" onClick={props.handler}>
+          Release date
+        </p>
+        <p className="Sorting-items button">Title</p>
       </div>
     </div>
   );
