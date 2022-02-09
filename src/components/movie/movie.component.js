@@ -42,6 +42,7 @@ const Movie = ({
     setMovieId(id);
     setDescriptionOpen(true);
   };
+
   return (
     <div id={id} className="movie-about" onClick={handleChangeDescription}>
       <img className="img-edit" src={img} />

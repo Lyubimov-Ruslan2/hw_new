@@ -26,7 +26,9 @@ function ToggleGenre(props) {
         <p className="Sorting-items button" onClick={props.handler}>
           Release date
         </p>
-        <p className="Sorting-items button">Title</p>
+        <p className="Sorting-items button" onClick={props.titleHandler}>
+          Title
+        </p>
       </div>
     </div>
   );

@@ -3,10 +3,6 @@ import "./MovieContainer.styles.css";
 import Movie from "../movie/movie.component";
 
 const MovieContainer = (props) => {
-  useEffect(() => {
-    console.log(props.movies);
-  }, [props.movies]);
-
   return (
     <>
       <p className="found">{props.movies.length} movies found</p>
