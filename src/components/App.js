@@ -15,7 +15,7 @@ import logo4 from "../img/Avengers.png";
 import logo5 from "../img/Inception.png";
 import logo6 from "../img/Dogs.png";
 import "../index.css";
-import { useSortedObject, useSortedByTitle } from "./hooks/MyCustomHooks";
+import useMyCustomHooks from "./hooks/useSortMovies";
 let movies = [
   {
     title: "Pulp Fiction",
@@ -69,34 +69,12 @@ let movies = [
 const App = (props) => {
   const [isDescriptionOpen, setDescriptionOpen] = useState(false);
   const [movieId, setMovieId] = useState(null);
-  const [sortedMovieByYear, setSortedMovieByYear] = useState(true);
-  const [sortedMovieByTitle, setSortedMovieByTitle] = useState(false);
-  const [movieList, setMovieList] = useState(movies);
+  const [sortBy, setSortBy] = useState("noSort");
 
   const handleDescription = () => {
     setDescriptionOpen(!isDescriptionOpen);
   };
-
-  const handleSortedByYear = () => {
-    setSortedMovieByYear(!sortedMovieByYear);
-  };
-  const handleSortedByTitle = () => {
-    setSortedMovieByTitle(!sortedMovieByTitle);
-  };
-
-  useEffect(() => {
-    console.log("sortedMovieByYear", sortedMovieByYear);
-    if (sortedMovieByYear) {
-      setMovieList(useSortedObject(movies));
-    }
-  }, [sortedMovieByYear, movies]);
-
-  useEffect(() => {
-    console.log("sortedMovieByTitle", sortedMovieByTitle);
-    if (sortedMovieByTitle) {
-      setMovieList(useSortedByTitle(movies));
-    }
-  }, [sortedMovieByTitle, movies]);
+  const sortedMovies = useMyCustomHooks([...movies], sortBy);
 
   const selectedMovie = movies.filter((movie) => movie.id === movieId);
   return (
@@ -108,26 +86,18 @@ const App = (props) => {
       ) : (
         <Header />
       )}
-
-      <ToggleGenre
-        handler={handleSortedByYear}
-        titleHandler={handleSortedByTitle}
-        setSortedMovieByYear={setSortedMovieByYear}
-        setSortedMovieByTitle={setSortedMovieByTitle}
-      />
+      <ToggleGenre setSortBy={setSortBy} />
       <ErrorBoundary>
         <MovieContainer
-          movies={movieList}
+          movies={sortedMovies}
           handler={handleDescription}
           isDescriptionOpen={isDescriptionOpen}
           setMovieId={setMovieId}
           setDescriptionOpen={setDescriptionOpen}
-          sortedMovieByYear={sortedMovieByYear}
         />
       </ErrorBoundary>
       <Footer>netflixroulette</Footer>
     </div>
   );
 };
-
 export default App;

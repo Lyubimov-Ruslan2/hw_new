@@ -1,12 +1,7 @@
 import React from "react";
 import "./ToggleGenre.styles.css";
 
-function ToggleGenre({
-  handler,
-  titleHandler,
-  setSortedMovieByYear,
-  setSortedMovieByTitle,
-}) {
+function ToggleGenre({ setSortBy }) {
   //   const handlerYear = () => {
   //     props.setSortedMovieByYear(false);
   //     props.setSortedMovieByTitle(true);
@@ -45,10 +40,13 @@ function ToggleGenre({
       </nav>
       <div className="Sorting">
         <p className="Sorting-items">Sort by</p>
-        <p className="Sorting-items button" onClick={handler}>
+        <p
+          className="Sorting-items button"
+          onClick={() => setSortBy("Release_Date")}
+        >
           Release date
         </p>
-        <p className="Sorting-items button" onClick={titleHandler}>
+        <p className="Sorting-items button" onClick={() => setSortBy("Title")}>
           Title
         </p>
       </div>
