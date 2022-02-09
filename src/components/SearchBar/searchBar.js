@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import "./SearchBar.styles.css";
 
 const SearchBar = (props) => {
   const [searchField, setSearchField] = useState("");
 
-  const handleChange = (e) => {
+  const handleChange = useCallback((e) => {
     setSearchField(e.target.value);
     console.log(searchField);
-  };
+  });
 
   return (
     <div className="search-area">
