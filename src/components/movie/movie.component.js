@@ -1,25 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import "./movie.styles.css";
 import editBtn from "../../img/edit.svg";
 import DeleteMovie from "../PopUps/DeleteMovie";
 import EditMovie from "../PopUps/EditMovie";
 import "../Header/infoMovie";
-
-const Movie = ({
-  img,
-  title,
-  year,
-  genre,
-  id,
-  handler,
-  isDescriptionOpen,
-  setMovieId,
-  setDescriptionOpen,
-}) => {
+import ListOfMoviesContext from "../../context";
+const Movie = ({ img, title, year, genre, id }) => {
   const [isEditMovieOpen, setEditMovieOpen] = useState(false);
   const [isDeleteMovieOpen, setDeleteMovieOpen] = useState(false);
   const [isIconOpen, setIconOpen] = useState(false);
+  const { setDescriptionOpen, setMovieId } = useContext(ListOfMoviesContext);
   const handleMovieEdit = () => {
     setEditMovieOpen(!isEditMovieOpen);
   };

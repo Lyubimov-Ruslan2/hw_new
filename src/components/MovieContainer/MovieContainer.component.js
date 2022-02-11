@@ -1,14 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import "./MovieContainer.styles.css";
 import Movie from "../movie/movie.component";
-
+import ListOfMoviesContext from "../../context";
 const MovieContainer = (props) => {
+  const { sortedMovies } = useContext(ListOfMoviesContext);
+
   return (
     <>
-      <p className="found">{props.movies.length} movies found</p>
+      <p className="found">{sortedMovies.length} movies found</p>
 
       <div className="movie-list">
-        {props.movies.map(({ title, img, year, genre, id }) => (
+        {sortedMovies.map(({ title, img, year, genre, id }) => (
           <Movie
             title={title}
             img={img}
@@ -16,10 +18,6 @@ const MovieContainer = (props) => {
             genre={genre}
             key={id}
             id={id}
-            handler={props.handler}
-            isDescriptionOpen={props.isDescriptionOpen}
-            setMovieId={props.setMovieId}
-            setDescriptionOpen={props.setDescriptionOpen}
           />
         ))}
       </div>

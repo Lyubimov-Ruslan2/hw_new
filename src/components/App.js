@@ -16,6 +16,7 @@ import logo5 from "../img/Inception.png";
 import logo6 from "../img/Dogs.png";
 import "../index.css";
 import useMyCustomHooks from "./hooks/useSortMovies";
+import ListOfMoviesContext from "../context";
 let movies = [
   {
     title: "Pulp Fiction",
@@ -79,24 +80,31 @@ const App = (props) => {
   const selectedMovie = movies.filter((movie) => movie.id === movieId);
   return (
     <div className="container">
-      {isDescriptionOpen ? (
-        selectedMovie.map(({ id, ...otherMovieInfo }) => (
-          <InfoMovie key={id} {...otherMovieInfo} handler={handleDescription} />
-        ))
-      ) : (
-        <Header />
-      )}
-      <ToggleGenre setSortBy={setSortBy} />
-      <ErrorBoundary>
-        <MovieContainer
-          movies={sortedMovies}
-          handler={handleDescription}
-          isDescriptionOpen={isDescriptionOpen}
-          setMovieId={setMovieId}
-          setDescriptionOpen={setDescriptionOpen}
-        />
-      </ErrorBoundary>
-      <Footer>netflixroulette</Footer>
+      <ListOfMoviesContext.Provider
+        value={{
+          sortedMovies,
+          handleDescription,
+          setDescriptionOpen,
+          setMovieId,
+        }}
+      >
+        {isDescriptionOpen ? (
+          selectedMovie.map(({ id, ...otherMovieInfo }) => (
+            <InfoMovie
+              key={id}
+              {...otherMovieInfo}
+              handler={handleDescription}
+            />
+          ))
+        ) : (
+          <Header />
+        )}
+        <ToggleGenre setSortBy={setSortBy} />
+        <ErrorBoundary>
+          <MovieContainer />
+        </ErrorBoundary>
+        <Footer>netflixroulette</Footer>
+      </ListOfMoviesContext.Provider>
     </div>
   );
 };
