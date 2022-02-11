@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import searchButton from "./img/SearchButton.svg";
 import pulpf from "../../img/pulpfiction.png";
 import "./infoMovie.styles.css";
+import ListOfMoviesContext from "../../context";
+const InfoMovie = ({ handler }) => {
+  const { selectedMovie } = useContext(ListOfMoviesContext);
+  const [myObj] = selectedMovie;
 
-const InfoMovie = ({ id, title, img, year, genre, handler, time }) => {
   const TimerConverter = (str) => {
     const time = +str;
     const convert_hours = Math.floor(time / 60);
@@ -14,20 +17,20 @@ const InfoMovie = ({ id, title, img, year, genre, handler, time }) => {
   };
   return (
     <>
-      <div id={id} className="description-movie">
+      <div id={myObj.id} className="description-movie">
         <div className="icons">
           <span>netflixroulette</span>
           <img src={searchButton} onClick={handler} alt="search" />
         </div>
         <div className="description-info">
-          <img src={img} alt="pulp" />
+          <img src={myObj.img} alt="pulp" />
           <div className="description-text">
-            <h1>{title}</h1>
+            <h1>{myObj.title}</h1>
             <span className="circle-rating">8.9</span>
-            <p>{genre}</p>
+            <p>{myObj.genre}</p>
             <div className="span-group">
-              <span>{year}</span>
-              <span>{TimerConverter(time)}</span>
+              <span>{myObj.year}</span>
+              <span>{TimerConverter(myObj.time)}</span>
             </div>
             <p>
               Jules Winnfield (Samuel L. Jackson) and Vincent Vega (John

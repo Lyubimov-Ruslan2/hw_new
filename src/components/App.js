@@ -86,16 +86,11 @@ const App = (props) => {
           handleDescription,
           setDescriptionOpen,
           setMovieId,
+          selectedMovie,
         }}
       >
         {isDescriptionOpen ? (
-          selectedMovie.map(({ id, ...otherMovieInfo }) => (
-            <InfoMovie
-              key={id}
-              {...otherMovieInfo}
-              handler={handleDescription}
-            />
-          ))
+          <InfoMovie handler={handleDescription} />
         ) : (
           <Header />
         )}
