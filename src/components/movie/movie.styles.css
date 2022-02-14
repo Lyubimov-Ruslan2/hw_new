@@ -121,8 +121,10 @@
 .pops-menu .last {
   margin-top: 0px;
   padding-bottom: 5px;
+  cursor: pointer;
 }
 
 .pops-menu .first {
   padding-top: 5px;
+  cursor: pointer;
 }
