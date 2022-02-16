@@ -4,9 +4,6 @@ import Footer from "./footter/footer.component";
 import ToggleGenre from "./Togglegenre/Togglegenre";
 import MovieContainer from "./MovieContainer/MovieContainer.component";
 import ErrorBoundary from "./ErrorBound/ErrorBoundary.component";
-import AddMovie from "./PopUps/AddMovie";
-import EditMovie from "./PopUps/EditMovie";
-import DeleteMovie from "./PopUps/DeleteMovie";
 import InfoMovie from "./Header/infoMovie";
 import logo1 from "../img/pulpfiction.png";
 import logo2 from "../img/Bogem.png";
@@ -17,6 +14,7 @@ import logo6 from "../img/Dogs.png";
 import "../index.css";
 import useMyCustomHooks from "./hooks/useSortMovies";
 import ListOfMoviesContext from "../context";
+import { connect } from "react-redux";
 let movies = [
   {
     title: "Pulp Fiction",
@@ -68,6 +66,7 @@ let movies = [
   },
 ];
 const App = (props) => {
+  const { movies123 } = props;
   const [isDescriptionOpen, setDescriptionOpen] = useState(false);
   const [movieId, setMovieId] = useState(null);
   const [sortBy, setSortBy] = useState("noSort");
@@ -100,7 +99,15 @@ const App = (props) => {
         </ErrorBoundary>
         <Footer>netflixroulette</Footer>
       </ListOfMoviesContext.Provider>
+      {console.log(movies123)}
     </div>
   );
 };
-export default App;
+
+const mapStateToProps = (state) => ({
+  movies123: state.movieReducer.movies,
+});
+
+export default connect(mapStateToProps, null)(App);
+
+// export default connect(mapStateToProps, mapDispatchToProps)(App);
