@@ -1,9 +1,13 @@
+import { SUCCESS } from "../actions/types";
+
 const initialState = {
-  movies: "Ruslan",
+  movies: [],
 };
 
 function movieReducer(state = initialState, action) {
   switch (action.type) {
+    case SUCCESS:
+      return { ...state, movies: [...action.payload] };
     default:
       return state;
   }
