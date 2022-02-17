@@ -15,6 +15,7 @@ import "../index.css";
 import useMyCustomHooks from "./hooks/useSortMovies";
 import ListOfMoviesContext from "../context";
 import { connect } from "react-redux";
+import { fetchMovie } from "../Redux/thunk/AsyncData";
 let movies = [
   {
     title: "Pulp Fiction",
@@ -66,7 +67,7 @@ let movies = [
   },
 ];
 const App = (props) => {
-  const { movies123 } = props;
+  const { movies1, movieData } = props;
   const [isDescriptionOpen, setDescriptionOpen] = useState(false);
   const [movieId, setMovieId] = useState(null);
   const [sortBy, setSortBy] = useState("noSort");
@@ -76,7 +77,11 @@ const App = (props) => {
   };
   const sortedMovies = useMyCustomHooks([...movies], sortBy);
 
-  const selectedMovie = movies.filter((movie) => movie.id === movieId);
+  useEffect(() => {
+    movieData();
+  }, []);
+  const selectedMovie = movies1.filter((movie) => movie.id === movieId);
+  console.log(selectedMovie);
   return (
     <div className="container">
       <ListOfMoviesContext.Provider
@@ -99,15 +104,19 @@ const App = (props) => {
         </ErrorBoundary>
         <Footer>netflixroulette</Footer>
       </ListOfMoviesContext.Provider>
-      {console.log(movies123)}
+      {/* {console.log(movies1)} */}
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({
-  movies123: state.movieReducer.movies,
+  movies1: state.movieReducer.movies,
 });
 
-export default connect(mapStateToProps, null)(App);
+const mapDispatchToProps = (dispatch) => ({
+  movieData: () => dispatch(fetchMovie()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 // export default connect(mapStateToProps, mapDispatchToProps)(App);

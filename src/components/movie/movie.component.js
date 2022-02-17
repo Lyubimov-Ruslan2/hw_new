@@ -6,7 +6,7 @@ import DeleteMovie from "../PopUps/DeleteMovie";
 import EditMovie from "../PopUps/EditMovie";
 import "../Header/infoMovie";
 import ListOfMoviesContext from "../../context";
-const Movie = ({ img, title, year, genre, id }) => {
+const Movie = ({ id, title, poster_path, genres, release_date }) => {
   const [isEditMovieOpen, setEditMovieOpen] = useState(false);
   const [isDeleteMovieOpen, setDeleteMovieOpen] = useState(false);
   const [isIconOpen, setIconOpen] = useState(false);
@@ -36,13 +36,13 @@ const Movie = ({ img, title, year, genre, id }) => {
 
   return (
     <div id={id} className="movie-about" onClick={handleChangeDescription}>
-      <img className="img-edit" src={img} />
+      <img className="img-edit" src={poster_path} />
 
       <div className="about">
         <p>{title}</p>
-        <button className="btn-about">{year}</button>
+        <button className="btn-about">{release_date.slice(0, 4)}</button>
       </div>
-      <p className="genre-about">{genre}</p>
+      <p className="genre-about">{genres.join(" / ")}</p>
       <img
         onClick={handleMovieIcon}
         className="edit"
@@ -83,7 +83,6 @@ Movie.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   year: PropTypes.number.isRequired,
-  id: PropTypes.string.isRequired,
 };
 
 export default Movie;

@@ -2,26 +2,25 @@ import React, { useEffect, useContext } from "react";
 import "./MovieContainer.styles.css";
 import Movie from "../movie/movie.component";
 import ListOfMoviesContext from "../../context";
+import { connect } from "react-redux";
 const MovieContainer = (props) => {
+  const { movies } = props;
   const { sortedMovies } = useContext(ListOfMoviesContext);
 
   return (
     <>
-      <p className="found">{sortedMovies.length} movies found</p>
+      <p className="found">{movies.length} movies found</p>
 
       <div className="movie-list">
-        {sortedMovies.map(({ title, img, year, genre, id }) => (
-          <Movie
-            title={title}
-            img={img}
-            year={year}
-            genre={genre}
-            key={id}
-            id={id}
-          />
+        {movies.map(({ id, ...otherProps }) => (
+          <Movie key={id} {...otherProps} />
         ))}
       </div>
     </>
   );
 };
-export default MovieContainer;
+const mapStateToProps = (state) => ({
+  movies: state.movieReducer.movies,
+});
+
+export default connect(mapStateToProps, null)(MovieContainer);
