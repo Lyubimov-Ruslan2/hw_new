@@ -17,6 +17,7 @@
   color: #ffffff;
   padding-left: 0;
   padding-right: 0;
+  cursor: pointer;
 }
 
 .Navigator__link:after {

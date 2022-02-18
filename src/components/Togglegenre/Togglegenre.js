@@ -1,57 +1,55 @@
 import React from "react";
 import "./ToggleGenre.styles.css";
+import { connect } from "react-redux";
+import { fetchMovieWithSorting } from "../../Redux/thunk/AsyncData";
 
-function ToggleGenre({ setSortBy }) {
-  //   const handlerYear = () => {
-  //     props.setSortedMovieByYear(false);
-  //     props.setSortedMovieByTitle(true);
-  //   };
-  //   const handlerTitle = () => {
-  //     props.setSortedMovieByYear(true);
-  //     props.setSortedMovieByTitle(false);
-  //   };
+function ToggleGenre(props) {
+  const { sortedByAll, sortedByGenre, sortedByDate, sortedByRating } = props;
 
-  // const handlerYear = () => {
-  //   setSortedMovieByYear(false);
-  //   setSortedMovieByTitle(true);
-  // };
-  // const handlerTitle = () => {
-  //   setSortedMovieByYear(true);
-  //   setSortedMovieByTitle(false);
-  // };
   return (
     <div className="flex-row">
-      <nav className="Navigator">
-        <a className="Navigator__link" href="#">
+      <div className="Navigator">
+        <p className="Navigator__link" onClick={() => sortedByAll()}>
           All
-        </a>
-        <a className="Navigator__link" href="#">
-          Documentary
-        </a>
-        <a className="Navigator__link" href="#">
+        </p>
+        <p className="Navigator__link" onClick={() => sortedByGenre("Action")}>
+          Action
+        </p>
+        <p className="Navigator__link" onClick={() => sortedByGenre("Comedy")}>
           Comedy
-        </a>
-        <a className="Navigator__link" href="#">
+        </p>
+        <p className="Navigator__link" onClick={() => sortedByGenre("Horror")}>
           Horror
-        </a>
-        <a className="Navigator__link" href="#">
+        </p>
+        <p className="Navigator__link" onClick={() => sortedByGenre("Crime")}>
           Crime
-        </a>
-      </nav>
+        </p>
+      </div>
       <div className="Sorting">
         <p className="Sorting-items">Sort by</p>
-        <p
-          className="Sorting-items button"
-          onClick={() => setSortBy("Release_Date")}
-        >
+        <p className="Sorting-items button" onClick={() => sortedByDate()}>
           Release date
         </p>
-        <p className="Sorting-items button" onClick={() => setSortBy("Title")}>
-          Title
+        <p className="Sorting-items button" onClick={() => sortedByRating()}>
+          Rating
         </p>
       </div>
     </div>
   );
 }
 
-export default ToggleGenre;
+const mapDispatchToProps = (dispatch) => ({
+  sortedByDate: () =>
+    dispatch(
+      fetchMovieWithSorting("sortBy=release_date&sortOrder=desc&limit=6")
+    ),
+  sortedByRating: () =>
+    dispatch(
+      fetchMovieWithSorting("sortBy=vote_average&sortOrder=desc&limit=6")
+    ),
+
+  sortedByGenre: (genre) =>
+    dispatch(fetchMovieWithSorting(`sortBy=genres&filter=${genre}&limit=6`)),
+  sortedByAll: () => dispatch(fetchMovieWithSorting(`limit=51`)),
+});
+export default connect(null, mapDispatchToProps)(ToggleGenre);

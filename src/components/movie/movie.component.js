@@ -83,6 +83,7 @@ Movie.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   year: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default Movie;
