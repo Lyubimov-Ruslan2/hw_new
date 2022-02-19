@@ -6,11 +6,24 @@ import DeleteMovie from "../PopUps/DeleteMovie";
 import EditMovie from "../PopUps/EditMovie";
 import "../Header/infoMovie";
 import ListOfMoviesContext from "../../context";
-const Movie = ({ id, title, poster_path, genres, release_date }) => {
+import { clickedMovie } from "../../Redux/actions/action";
+import { connect } from "react-redux";
+const Movie = ({
+  id,
+  title,
+  poster_path,
+  genres,
+  release_date,
+  vote_average,
+  runtime,
+  overview,
+  movieDispatch,
+}) => {
   const [isEditMovieOpen, setEditMovieOpen] = useState(false);
   const [isDeleteMovieOpen, setDeleteMovieOpen] = useState(false);
   const [isIconOpen, setIconOpen] = useState(false);
   const { setDescriptionOpen, setMovieId } = useContext(ListOfMoviesContext);
+
   const handleMovieEdit = () => {
     setEditMovieOpen(!isEditMovieOpen);
   };
@@ -30,8 +43,20 @@ const Movie = ({ id, title, poster_path, genres, release_date }) => {
   }, [isEditMovieOpen, isIconOpen, isDeleteMovieOpen]);
 
   const handleChangeDescription = () => {
-    setMovieId(id);
+    movieDispatch({
+      id,
+      title,
+      poster_path,
+      genres,
+      release_date,
+      overview,
+      vote_average,
+      runtime,
+    });
+
     setDescriptionOpen(true);
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   };
 
   return (
@@ -86,4 +111,8 @@ Movie.propTypes = {
   id: PropTypes.number.isRequired,
 };
 
-export default Movie;
+const mapDispatchToProps = (dispatch) => ({
+  movieDispatch: (movieData) => dispatch(clickedMovie(movieData)),
+});
+
+export default connect(null, mapDispatchToProps)(Movie);

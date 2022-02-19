@@ -1,7 +1,7 @@
 import React from "react";
 import "./ToggleGenre.styles.css";
 import { connect } from "react-redux";
-import { fetchMovieWithSorting } from "../../Redux/thunk/AsyncData";
+import { fetchMovie } from "../../Redux/thunk/AsyncData";
 
 function ToggleGenre(props) {
   const { sortedByAll, sortedByGenre, sortedByDate, sortedByRating } = props;
@@ -40,16 +40,13 @@ function ToggleGenre(props) {
 
 const mapDispatchToProps = (dispatch) => ({
   sortedByDate: () =>
-    dispatch(
-      fetchMovieWithSorting("sortBy=release_date&sortOrder=desc&limit=6")
-    ),
+    dispatch(fetchMovie("sortBy=release_date&sortOrder=desc&limit=6")),
   sortedByRating: () =>
-    dispatch(
-      fetchMovieWithSorting("sortBy=vote_average&sortOrder=desc&limit=6")
-    ),
+    dispatch(fetchMovie("sortBy=vote_average&sortOrder=desc&limit=6")),
 
   sortedByGenre: (genre) =>
-    dispatch(fetchMovieWithSorting(`sortBy=genres&filter=${genre}&limit=6`)),
-  sortedByAll: () => dispatch(fetchMovieWithSorting(`limit=51`)),
+    dispatch(fetchMovie(`sortBy=genres&filter=${genre}&limit=6`)),
+
+  sortedByAll: () => dispatch(fetchMovie(`limit=51`)),
 });
 export default connect(null, mapDispatchToProps)(ToggleGenre);

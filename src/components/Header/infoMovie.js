@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import searchButton from "./img/SearchButton.svg";
 import "./infoMovie.styles.css";
-import ListOfMoviesContext from "../../context";
-const InfoMovie = ({ handler }) => {
-  const { selectedMovie } = useContext(ListOfMoviesContext);
-  const [myObj] = selectedMovie;
+import { connect } from "react-redux";
 
+const InfoMovie = ({ handler, movieClicked }) => {
   const TimerConverter = (str) => {
     const time = +str;
     const convert_hours = Math.floor(time / 60);
@@ -16,22 +14,22 @@ const InfoMovie = ({ handler }) => {
   };
   return (
     <>
-      <div id={myObj.id} className="description-movie">
+      <div id={movieClicked.id} className="description-movie">
         <div className="icons">
           <span>netflixroulette</span>
           <img src={searchButton} onClick={handler} alt="search" />
         </div>
         <div className="description-info">
-          <img src={myObj.poster_path} alt="pulp" />
+          <img src={movieClicked.poster_path} alt="pulp" />
           <div className="description-text">
-            <h1>{myObj.title}</h1>
-            <span className="circle-rating">{myObj.vote_average}</span>
-            <p>{myObj.genres.join(" / ")}</p>
+            <h1>{movieClicked.title}</h1>
+            <span className="circle-rating">{movieClicked.vote_average}</span>
+            <p>{movieClicked.genres.join(" / ")}</p>
             <div className="span-group">
-              <span>{myObj.release_date.slice(0, 4)}</span>
-              <span>{TimerConverter(myObj.runtime)}</span>
+              <span>{movieClicked.release_date.slice(0, 4)}</span>
+              <span>{TimerConverter(movieClicked.runtime)}</span>
             </div>
-            <p>{myObj.overview}</p>
+            <p>{movieClicked.overview}</p>
           </div>
         </div>
       </div>
@@ -39,4 +37,8 @@ const InfoMovie = ({ handler }) => {
   );
 };
 
-export default InfoMovie;
+const mapStateToProps = (state) => ({
+  movieClicked: state.movieReducer.clickedMovie,
+});
+
+export default connect(mapStateToProps, null)(InfoMovie);

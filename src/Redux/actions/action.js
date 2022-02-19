@@ -1,4 +1,5 @@
 import { SUCCESS } from "./types";
+import { CLICK_EVENT } from "./types";
 
 const dataMovie = (movie) => (dispatch) => {
   dispatch({
@@ -7,4 +8,11 @@ const dataMovie = (movie) => (dispatch) => {
   });
 };
 
-export { dataMovie };
+const clickedMovie = (focusMovie) => (dispatch) => {
+  dispatch({
+    type: CLICK_EVENT,
+    payload: focusMovie,
+  });
+};
+
+export { dataMovie, clickedMovie };

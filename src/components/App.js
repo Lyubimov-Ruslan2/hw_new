@@ -13,7 +13,6 @@ import { fetchMovie } from "../Redux/thunk/AsyncData";
 const App = (props) => {
   const { movies1, movieData } = props;
   const [isDescriptionOpen, setDescriptionOpen] = useState(false);
-  const [movieId, setMovieId] = useState(null);
 
   const handleDescription = () => {
     setDescriptionOpen(!isDescriptionOpen);
@@ -23,16 +22,12 @@ const App = (props) => {
     movieData();
   }, []);
 
-  const selectedMovie = movies1.filter((movie) => movie.id === movieId);
-
   return (
     <div className="container">
       <ListOfMoviesContext.Provider
         value={{
           handleDescription,
           setDescriptionOpen,
-          setMovieId,
-          selectedMovie,
         }}
       >
         {isDescriptionOpen ? (
@@ -55,7 +50,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  movieData: () => dispatch(fetchMovie()),
+  movieData: () => dispatch(fetchMovie("&limit=6")),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
