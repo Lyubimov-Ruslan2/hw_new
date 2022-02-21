@@ -32,7 +32,8 @@ const Movie = ({
     setDeleteMovieOpen(!isDeleteMovieOpen);
   };
 
-  const handleMovieIcon = () => {
+  const handleMovieIcon = (e) => {
+    e.stopPropagation();
     setIconOpen(!isIconOpen);
   };
 
