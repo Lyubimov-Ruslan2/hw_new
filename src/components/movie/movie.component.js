@@ -7,6 +7,7 @@ import EditMovie from "../PopUps/EditMovie";
 import "../Header/infoMovie";
 import ListOfMoviesContext from "../../context";
 import { clickedMovie } from "../../Redux/actions/action";
+
 import { connect } from "react-redux";
 const Movie = ({
   id,
@@ -18,17 +19,19 @@ const Movie = ({
   runtime,
   overview,
   movieDispatch,
+  deleteDispatch,
 }) => {
   const [isEditMovieOpen, setEditMovieOpen] = useState(false);
   const [isDeleteMovieOpen, setDeleteMovieOpen] = useState(false);
   const [isIconOpen, setIconOpen] = useState(false);
   const { setDescriptionOpen, setMovieId } = useContext(ListOfMoviesContext);
 
-  const handleMovieEdit = () => {
+  const handleMovieEdit = (e) => {
+    e.stopPropagation();
     setEditMovieOpen(!isEditMovieOpen);
   };
 
-  const handleMovieDelete = () => {
+  const handleMovieDelete = (e) => {
     setDeleteMovieOpen(!isDeleteMovieOpen);
   };
 
@@ -94,7 +97,11 @@ const Movie = ({
         handler={handleMovieEdit}
         title={title}
       />
-      <DeleteMovie trigger={isDeleteMovieOpen} handler={handleMovieDelete} />
+      <DeleteMovie
+        id={id}
+        trigger={isDeleteMovieOpen}
+        handler={handleMovieDelete}
+      />
     </div>
   );
 };

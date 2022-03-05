@@ -4,6 +4,7 @@ import { CLICK_EVENT } from "../actions/types";
 const initialState = {
   movies: [],
   clickedMovie: null,
+  deleteClickMovie: null,
 };
 
 function movieReducer(state = initialState, action) {
@@ -12,6 +13,7 @@ function movieReducer(state = initialState, action) {
       return { ...state, movies: [...action.payload] };
     case CLICK_EVENT:
       return { ...state, clickedMovie: action.payload };
+
     default:
       return state;
   }

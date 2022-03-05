@@ -49,3 +49,21 @@ export function addMovie(obj) {
       });
   };
 }
+
+export function deleteMovie(id) {
+  return (dispatch) => {
+    return fetch(`http://localhost:4000/movies/${id}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (response.ok === true) {
+          dispatch(fetchMovie("&limit=6"));
+        } else {
+          console.log("ERROR");
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+}
