@@ -44,7 +44,7 @@ const AddMovie = (props) => {
                 resetForm();
               }}
             >
-              {({ values, touched, errors, isSubmitting }) => (
+              {({ values, touched, errors, isSubmitting, resetForm }) => (
                 <Form>
                   <div className="form">
                     <div>
@@ -58,7 +58,9 @@ const AddMovie = (props) => {
                       {errors.addTitle && touched.addTitle && (
                         <ErrorMessage name="addTitle">
                           {(errors) => (
-                            <div style={{ color: "yellow" }}>{errors}</div>
+                            <div style={{ color: "yellow", margin: "0" }}>
+                              {errors}
+                            </div>
                           )}
                         </ErrorMessage>
                       )}
@@ -74,7 +76,9 @@ const AddMovie = (props) => {
                       {errors.addReleaseDate && touched.addReleaseDate && (
                         <ErrorMessage name="addReleaseDate">
                           {(errors) => (
-                            <div style={{ color: "yellow" }}>{errors}</div>
+                            <div style={{ color: "yellow", margin: "0" }}>
+                              {errors}
+                            </div>
                           )}
                         </ErrorMessage>
                       )}
@@ -91,7 +95,9 @@ const AddMovie = (props) => {
                       {errors.addUrl && touched.addUrl && (
                         <ErrorMessage name="addUrl">
                           {(errors) => (
-                            <div style={{ color: "yellow" }}>{errors}</div>
+                            <div style={{ color: "yellow", margin: "0" }}>
+                              {errors}
+                            </div>
                           )}
                         </ErrorMessage>
                       )}
@@ -108,7 +114,9 @@ const AddMovie = (props) => {
                       {errors.addRating && touched.addRating && (
                         <ErrorMessage name="addRating">
                           {(errors) => (
-                            <div style={{ color: "yellow" }}>{errors}</div>
+                            <div style={{ color: "yellow", margin: "0" }}>
+                              {errors}
+                            </div>
                           )}
                         </ErrorMessage>
                       )}
@@ -127,7 +135,9 @@ const AddMovie = (props) => {
                       {errors.addGenre && touched.addGenre && (
                         <ErrorMessage name="addGenre">
                           {(errors) => (
-                            <div style={{ color: "yellow" }}>{errors}</div>
+                            <div style={{ color: "yellow", margin: "0" }}>
+                              {errors}
+                            </div>
                           )}
                         </ErrorMessage>
                       )}
@@ -145,7 +155,9 @@ const AddMovie = (props) => {
                       {errors.addRuntime && touched.addRuntime && (
                         <ErrorMessage name="addRuntime">
                           {(errors) => (
-                            <div style={{ color: "yellow" }}>{errors}</div>
+                            <div style={{ color: "yellow", margin: "0" }}>
+                              {errors}
+                            </div>
                           )}
                         </ErrorMessage>
                       )}
@@ -161,7 +173,9 @@ const AddMovie = (props) => {
                       {errors.addOverview && touched.addOverview && (
                         <ErrorMessage name="addOverview">
                           {(errors) => (
-                            <div style={{ color: "yellow" }}>{errors}</div>
+                            <div style={{ color: "yellow", margin: "0" }}>
+                              {errors}
+                            </div>
                           )}
                         </ErrorMessage>
                       )}
