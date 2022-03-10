@@ -4,7 +4,6 @@ import { CLICK_EVENT } from "../actions/types";
 const initialState = {
   movies: [],
   clickedMovie: null,
-  deleteClickMovie: null,
 };
 
 function movieReducer(state = initialState, action) {
