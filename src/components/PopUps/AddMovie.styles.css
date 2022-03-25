@@ -120,8 +120,7 @@
 }
 
 .POPUP-INFO .form input,
-textarea,
-select {
+textarea {
   padding: 17px 18px;
   background: rgba(50, 50, 50, 0.9);
   color: #ffffff;
@@ -141,15 +140,15 @@ select {
   outline: 1px solid #f65261;
 }
 
-.POPUP-INFO .form .custom-select {
+/* .POPUP-INFO .form .custom-select {
   position: relative;
 }
 
 .POPUP-INFO .form .custom-select select:focus {
   outline: 1px solid #f65261;
-}
+} */
 
-.POPUP-INFO .form .custom-select .arrow-genre {
+/* .POPUP-INFO .form .custom-select .arrow-genre {
   position: absolute;
   width: 20px;
   height: 12px;
@@ -157,7 +156,7 @@ select {
   top: 44%;
   cursor: pointer;
   appearance: none;
-}
+} */
 
 .POPUP-INFO .form textarea {
   height: 70px;
@@ -210,4 +209,8 @@ select {
 }
 .btns-2:active {
   transform: scale(0.9);
+}
+
+#Genre {
+  color: white;
 }

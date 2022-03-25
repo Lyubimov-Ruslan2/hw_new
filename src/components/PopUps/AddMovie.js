@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
 import { addMovie } from "../../Redux/thunk/AsyncData";
+import CustomSelect from "../CustomSelect/CustomSelect";
 
 const addMovieSchema = Yup.object().shape({
   addTitle: Yup.string().required("*Required"),
@@ -122,16 +123,12 @@ const AddMovie = (props) => {
                       )}
                     </div>
                     <div>
-                      <label htmlFor="form-genre">Genre</label>
-                      <div className="custom-select">
-                        <select>
-                          <option value="crime">Crime</option>
-                          <option value="documentary">Documentary</option>
-                          <option value="horror">Horror</option>
-                          <option value="comedy">Comedy</option>
-                        </select>
-                        <img className="arrow-genre" src={arrow} alt="arrow" />
-                      </div>
+                      <Field
+                        title="addGenre"
+                        name="addGenre"
+                        component={CustomSelect}
+                      />
+
                       {errors.addGenre && touched.addGenre && (
                         <ErrorMessage name="addGenre">
                           {(errors) => (

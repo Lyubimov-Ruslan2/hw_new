@@ -38,9 +38,8 @@ export function addMovie(obj) {
     })
       .then((response) => {
         if (response.ok === true) {
-          {
-            console.log(obj);
-          }
+          console.log(obj);
+
           dispatch(fetchMovie("&limit=6"));
         }
       })
