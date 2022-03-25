@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./AddMovie.styles.css";
-import arrow from "../../img/Arrowforgenre.svg";
-import { useDispatch, useSelector } from "react-redux";
+
+import { useDispatch } from "react-redux";
 import { deleteMovie } from "../../Redux/thunk/AsyncData";
+import ListOfMoviesContext from "../../context";
 
 const DeleteMovie = (props) => {
+  const { setDescriptionOpen } = useContext(ListOfMoviesContext);
   const handleDelete = () => {
     dispatch(deleteMovie(props.id));
+    setDescriptionOpen(false);
     alert("The movie was deleted!");
   };
   const dispatch = useDispatch();
-  const { deleteClickMovie } = useSelector((state) => state);
+
   return (
     <>
       {props.trigger ? (
@@ -19,7 +22,7 @@ const DeleteMovie = (props) => {
             <button onClick={props.handler} className="cls-btn">
               x
             </button>
-            {console.log(deleteClickMovie)}
+
             <h1>Delete Movie</h1>
             <p>Are you sure you want to delete this movie?</p>
             <div className="btns-for-add">

@@ -123,12 +123,7 @@ const AddMovie = (props) => {
                       )}
                     </div>
                     <div>
-                      <Field
-                        title="addGenre"
-                        name="addGenre"
-                        component={CustomSelect}
-                      />
-
+                      <CustomSelect />
                       {errors.addGenre && touched.addGenre && (
                         <ErrorMessage name="addGenre">
                           {(errors) => (

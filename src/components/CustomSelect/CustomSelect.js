@@ -27,7 +27,7 @@ const CustomSelect = () => {
           <div className="options--section">
             {genreList.map((genre) => (
               <div key={genre.id} className="options--wrapper">
-                <Field type="checkbox" name="genre" value={genre.title} />
+                <Field type="checkbox" name="addGenre" value={genre.title} />
                 <label>{genre.title}</label>
               </div>
             ))}
