@@ -1,5 +1,6 @@
 import { SUCCESS } from "./types";
 import { CLICK_EVENT } from "./types";
+import { MOVIE_DELETED } from "./types";
 
 const dataMovie = (movie) => (dispatch) => {
   dispatch({
@@ -15,4 +16,11 @@ const clickedMovie = (focusMovie) => (dispatch) => {
   });
 };
 
-export { dataMovie, clickedMovie };
+const deletedMovie = (movieId) => (dispatch) => {
+  dispatch({
+    type: MOVIE_DELETED,
+    payload: movieId,
+  });
+};
+
+export { dataMovie, clickedMovie, deletedMovie };

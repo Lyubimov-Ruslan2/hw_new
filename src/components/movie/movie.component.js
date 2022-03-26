@@ -63,6 +63,19 @@ const Movie = ({
     document.documentElement.scrollTop = 0;
   };
 
+  const handleEdit = () => {
+    movieDispatch({
+      id,
+      title,
+      poster_path,
+      genres,
+      release_date,
+      overview,
+      vote_average,
+      runtime,
+    });
+  };
+
   return (
     <div id={id} className="movie-about" onClick={handleChangeDescription}>
       <img className="img-edit" src={poster_path} />
@@ -93,6 +106,7 @@ const Movie = ({
         </div>
       )}
       <EditMovie
+        onClick={handleEdit}
         trigger={isEditMovieOpen}
         handler={handleMovieEdit}
         title={title}

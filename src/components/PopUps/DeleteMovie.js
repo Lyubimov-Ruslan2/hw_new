@@ -1,14 +1,17 @@
 import React, { useContext } from "react";
+``;
 import "./AddMovie.styles.css";
 
 import { useDispatch } from "react-redux";
 import { deleteMovie } from "../../Redux/thunk/AsyncData";
+import { deletedMovie } from "../../Redux/actions/action";
 import ListOfMoviesContext from "../../context";
 
 const DeleteMovie = (props) => {
   const { setDescriptionOpen } = useContext(ListOfMoviesContext);
   const handleDelete = () => {
     dispatch(deleteMovie(props.id));
+    dispatch(deletedMovie(props.id));
     setDescriptionOpen(false);
     alert("The movie was deleted!");
   };

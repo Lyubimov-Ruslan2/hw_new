@@ -1,6 +1,5 @@
 import React from "react";
 import "./AddMovie.styles.css";
-import arrow from "../../img/Arrowforgenre.svg";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
@@ -27,7 +26,7 @@ const AddMovie = (props) => {
             <button onClick={props.handler} className="cls-btn">
               x
             </button>
-            <h1>ADD MOVIE</h1>
+            <h1>add movie</h1>
             <Formik
               initialValues={{
                 addTitle: "",
@@ -45,7 +44,7 @@ const AddMovie = (props) => {
                 resetForm();
               }}
             >
-              {({ values, touched, errors, isSubmitting, resetForm }) => (
+              {({ touched, errors, isSubmitting, resetForm }) => (
                 <Form>
                   <div className="form">
                     <div>

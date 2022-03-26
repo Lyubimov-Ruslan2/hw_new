@@ -140,24 +140,6 @@ textarea {
   outline: 1px solid #f65261;
 }
 
-/* .POPUP-INFO .form .custom-select {
-  position: relative;
-}
-
-.POPUP-INFO .form .custom-select select:focus {
-  outline: 1px solid #f65261;
-} */
-
-/* .POPUP-INFO .form .custom-select .arrow-genre {
-  position: absolute;
-  width: 20px;
-  height: 12px;
-  right: 0.4%;
-  top: 44%;
-  cursor: pointer;
-  appearance: none;
-} */
-
 .POPUP-INFO .form textarea {
   height: 70px;
 }
@@ -209,8 +191,4 @@ textarea {
 }
 .btns-2:active {
   transform: scale(0.9);
-}
-
-#Genre {
-  color: white;
 }

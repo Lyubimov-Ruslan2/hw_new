@@ -14,6 +14,7 @@ const InfoMovie = ({ handler, movieClicked }) => {
   };
   return (
     <>
+      {console.log(movieClicked)}
       <div id={movieClicked.id} className="description-movie">
         <div className="icons">
           <span>netflixroulette</span>
