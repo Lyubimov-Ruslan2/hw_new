@@ -120,8 +120,7 @@
 }
 
 .POPUP-INFO .form input,
-textarea,
-select {
+textarea {
   padding: 17px 18px;
   background: rgba(50, 50, 50, 0.9);
   color: #ffffff;
@@ -139,24 +138,6 @@ select {
 
 .POPUP-INFO .form input:focus {
   outline: 1px solid #f65261;
-}
-
-.POPUP-INFO .form .custom-select {
-  position: relative;
-}
-
-.POPUP-INFO .form .custom-select select:focus {
-  outline: 1px solid #f65261;
-}
-
-.POPUP-INFO .form .custom-select .arrow-genre {
-  position: absolute;
-  width: 20px;
-  height: 12px;
-  right: 0.4%;
-  top: 44%;
-  cursor: pointer;
-  appearance: none;
 }
 
 .POPUP-INFO .form textarea {

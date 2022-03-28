@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./MovieContainer.styles.css";
 import Movie from "../movie/movie.component";
 import { connect } from "react-redux";
