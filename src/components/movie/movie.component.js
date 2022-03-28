@@ -7,9 +7,8 @@ import EditMovie from "../PopUps/EditMovie";
 import "../Header/infoMovie";
 import ListOfMoviesContext from "../../context";
 import { clickedMovie } from "../../Redux/actions/action";
-import { editMovieByIdAction } from "../../Redux/actions/action";
-
 import { connect } from "react-redux";
+import { editMovieByIdAction } from "../../Redux/actions/action";
 const Movie = ({
   id,
   title,
@@ -26,80 +25,57 @@ const Movie = ({
   const [isDeleteMovieOpen, setDeleteMovieOpen] = useState(false);
   const [isIconOpen, setIconOpen] = useState(false);
   const { setDescriptionOpen, setMovieId } = useContext(ListOfMoviesContext);
-
   const handleMovieEdit = (e) => {
-    e.stopPropagation();
+    // e.stopPropagation();
     setEditMovieOpen(!isEditMovieOpen);
   };
-
   const handleMovieDelete = (e) => {
     setDeleteMovieOpen(!isDeleteMovieOpen);
   };
-
   const handleMovieIcon = (e) => {
     e.stopPropagation();
     setIconOpen(!isIconOpen);
   };
-
   useEffect(() => {
     if (isEditMovieOpen || isDeleteMovieOpen) {
       setIconOpen(false);
     }
   }, [isEditMovieOpen, isIconOpen, isDeleteMovieOpen]);
-
   const handleChangeDescription = (e) => {
-    if (
-      e.target.textContent === "Delete" ||
-      e.target.textContent === "Edit" ||
-      e.target.textContent === "Confirm"
-    ) {
-      return;
-    } else {
-      movieDispatch({
-        id,
-        title,
-        poster_path,
-        genres,
-        release_date,
-        overview,
-        vote_average,
-        runtime,
-      });
-      editMovieDispatch({
-        id,
-        title,
-        poster_path,
-        genres,
-        release_date,
-        overview,
-        vote_average,
-        runtime,
-      });
+    movieDispatch({
+      id,
+      title,
+      poster_path,
+      genres,
+      release_date,
+      overview,
+      vote_average,
+      runtime,
+    });
+    editMovieDispatch({
+      id,
+      title,
+      poster_path,
+      genres,
+      release_date,
+      overview,
+      vote_average,
+      runtime,
+    });
 
-      setDescriptionOpen(true);
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-    }
+    setDescriptionOpen(true);
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   };
 
-  // const handleEdit = () => {
-  //   movieDispatch({
-  //     id,
-  //     title,
-  //     poster_path,
-  //     genres,
-  //     release_date,
-  //     overview,
-  //     vote_average,
-  //     runtime,
-  //   });
-  // };
-
   return (
-    <div>
-      <div id={id} className="movie-about" onClick={handleChangeDescription}>
+    <>
+      <div
+        id={id}
+        className="movie-about"
+        onClick={(e) => handleChangeDescription(e)}
+      >
         <img className="img-edit" src={poster_path} />
-
         <div className="about">
           <p>{title}</p>
           <button className="btn-about">{release_date.slice(0, 4)}</button>
@@ -111,7 +87,6 @@ const Movie = ({
           src={editBtn}
           alt="edit"
         />
-
         {isIconOpen && (
           <div className="pops-menu">
             <button onClick={handleMovieIcon} className="cl">
@@ -120,7 +95,6 @@ const Movie = ({
             <p className="first" onClick={handleMovieEdit}>
               Edit
             </p>
-
             <p onClick={handleMovieDelete} className="last">
               Delete
             </p>
@@ -129,12 +103,9 @@ const Movie = ({
       </div>
       {isEditMovieOpen && (
         <EditMovie
-          onClick={(e) => {
-            console.log(e);
-          }}
           trigger={isEditMovieOpen}
           handler={handleMovieEdit}
-          modalclose={setEditMovieOpen}
+          title={title}
         />
       )}
       {isDeleteMovieOpen && (
@@ -144,26 +115,22 @@ const Movie = ({
           handler={handleMovieDelete}
         />
       )}
-    </div>
+    </>
   );
 };
-
 Movie.defaultProps = {
   title: "Amazing movie!",
   year: 2000,
   genre: "Action & Adventure",
 };
-
 Movie.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   year: PropTypes.number.isRequired,
   id: PropTypes.number.isRequired,
 };
-
 const mapDispatchToProps = (dispatch) => ({
   movieDispatch: (movieData) => dispatch(clickedMovie(movieData)),
   editMovieDispatch: (data) => dispatch(editMovieByIdAction(data)),
 });
-
 export default connect(null, mapDispatchToProps)(Movie);

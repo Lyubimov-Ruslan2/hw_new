@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import "./AddMovie.styles.css";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { editMovie } from "../../Redux/thunk/AsyncData";
 import CustomSelect from "../CustomSelect/CustomSelect";
 import { editMovieByIdAction } from "../../Redux/actions/action";
@@ -38,7 +38,7 @@ const EditMovie = (props) => {
               x
             </button>
             <h1>edit movie</h1>
-            {console.log(props.editMovieClicked)}
+
             <Formik
               initialValues={{
                 editTitle: movieForm ? movieForm?.title : "",
@@ -52,7 +52,7 @@ const EditMovie = (props) => {
               enableReinitialize={true}
               validationSchema={editMovieSchema}
               onSubmit={(value, { resetForm }) => {
-                dispatch(editMovie(value, props.editMovieClicked));
+                dispatch(editMovie(value, movieForm));
                 resetForm();
               }}
             >
@@ -183,8 +183,8 @@ const EditMovie = (props) => {
                     <button
                       className="btns-1"
                       onClick={() => {
-                        dispatch(editMovieByIdAction(null));
                         resetForm();
+                        dispatch(editMovieByIdAction(null));
                       }}
                     >
                       reset
@@ -197,7 +197,7 @@ const EditMovie = (props) => {
                         setDescriptionOpen(false);
                       }}
                     >
-                      submit
+                      edit
                     </button>
                   </div>
                 </Form>
@@ -210,7 +210,6 @@ const EditMovie = (props) => {
   );
 };
 const mapStateToProps = (state) => ({
-  // movieClicked: state.movieReducer.clickedMovie,
   editMovieClicked: state.movieReducer.editMovieState,
 });
 export default connect(mapStateToProps, null)(EditMovie);
