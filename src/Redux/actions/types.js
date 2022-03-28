@@ -1,3 +1,4 @@
 export const SUCCESS = "SUCCESS";
 export const CLICK_EVENT = "CLICK_EVENT";
 export const MOVIE_DELETED = "MOVIE_DELETED";
+export const EDIT_MOVIE_ACTION_TYPE = "EDIT_MOVIE_ACTION_TYPE";

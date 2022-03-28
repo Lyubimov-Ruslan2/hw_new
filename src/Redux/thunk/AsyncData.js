@@ -50,25 +50,25 @@ export function addMovie(obj) {
 }
 
 //Edit
-export function editMovie(obj) {
+export function editMovie(obj, id) {
   const {
-    addTitle: title,
-    addReleaseDate: release_date,
-    addUrl: poster_path,
-    addRating: vote_average,
+    editTitle: title,
+    editReleaseDate: release_date,
+    editUrl: poster_path,
+    editRating: vote_average,
     addGenre: genres,
-    addRuntime: runtime,
-    addOverview: overview,
+    editRuntime: runtime,
+    editOverview: overview,
   } = obj;
 
   return (dispatch) => {
     return fetch("http://localhost:4000/movies", {
       headers: {
-        Accept: "application/json",
         "Content-Type": "application/json",
       },
       method: "PUT",
       body: JSON.stringify({
+        id: id.id,
         title,
         release_date,
         poster_path,

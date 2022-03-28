@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Field, ErrorMessage } from "formik";
 // import { MultiSelect } from "react-multi-select-component";
+import arrowForGenre from "../../img/Arrowforgenre.svg";
 import Multiselect from "multiselect-react-dropdown";
-import "./CustomSelect";
+import "./CustomSelect.css";
 const CustomSelect = () => {
   const genreList = [
     { id: 1, title: "Action" },
@@ -16,17 +17,21 @@ const CustomSelect = () => {
     setOpenCheckBox((prev) => !prev);
   };
   return (
-    <div className="select">
+    <div className="Custom-select">
       <label htmlFor="modal__checkbox">Genre</label>
 
       <div className="options">
         <div className="options--title" onClick={OptionsHandler}>
           Select Genre
+          <img
+            src={arrowForGenre}
+            className={!OpenCheckBox ? "" : "arrow-reverse"}
+          />
         </div>
         {OpenCheckBox && (
           <div className="options--section">
             {genreList.map((genre) => (
-              <div key={genre.id} className="options--wrapper">
+              <div key={genre.id} className="options--select-section">
                 <Field type="checkbox" name="addGenre" value={genre.title} />
                 <label>{genre.title}</label>
               </div>

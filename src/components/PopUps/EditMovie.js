@@ -1,25 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./AddMovie.styles.css";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { editMovie } from "../../Redux/thunk/AsyncData";
 import CustomSelect from "../CustomSelect/CustomSelect";
+import { editMovieByIdAction } from "../../Redux/actions/action";
 import { connect } from "react-redux";
+import ListOfMoviesContext from "../../context";
+
 const editMovieSchema = Yup.object().shape({
   editTitle: Yup.string().required("*Required"),
   editReleaseDate: Yup.string().required("*Required"),
   editUrl: Yup.string()
     .url("*Please, enter correct URL!")
     .required("*Required"),
-  editRating: Yup.number().required("*Required"),
+  editRating: Yup.number()
+    .min(0, "Must be minimum 0")
+    .max(10, "Must be maximum 10")
+    .required("*Required"),
+  addGenre: Yup.array().min(1, "At least one option").required("*Required"),
   editRuntime: Yup.number().required("*Required"),
   editOverview: Yup.string().required("*Required"),
 });
 
 const EditMovie = (props) => {
+  const { setDescriptionOpen } = useContext(ListOfMoviesContext);
   const dispatch = useDispatch();
-  const { clickedMovie } = useSelector((state) => state);
+  const movieForm = props.editMovieClicked;
+
   return (
     <>
       {props.trigger ? (
@@ -29,20 +38,21 @@ const EditMovie = (props) => {
               x
             </button>
             <h1>edit movie</h1>
+            {console.log(props.editMovieClicked)}
             <Formik
               initialValues={{
-                editTitle: props.movieClicked.title,
-                editReleaseDate: props.movieClicked.release_date,
-                editUrl: props.movieClicked.poster_path,
-                editRating: props.movieClicked.vote_average,
-                editGenre: props.movieClicked.genres,
-                editRuntime: props.movieClicked.runtime,
-                editOverview: props.movieClicked.overview,
+                editTitle: movieForm ? movieForm?.title : "",
+                editReleaseDate: movieForm ? movieForm?.release_date : "",
+                editUrl: movieForm ? movieForm?.poster_path : "",
+                editRating: movieForm ? movieForm?.vote_average : "",
+                addGenre: movieForm ? movieForm?.genres : [],
+                editRuntime: movieForm ? movieForm?.runtime : "",
+                editOverview: movieForm ? movieForm?.overview : "",
               }}
               enableReinitialize={true}
               validationSchema={editMovieSchema}
               onSubmit={(value, { resetForm }) => {
-                dispatch(editMovie(value));
+                dispatch(editMovie(value, props.editMovieClicked));
                 resetForm();
               }}
             >
@@ -107,13 +117,7 @@ const EditMovie = (props) => {
                     </div>
                     <div>
                       <label htmlFor="editRating">Rating</label>
-                      <Field
-                        title="Rating"
-                        type="number"
-                        name="editRating"
-                        min="0"
-                        max="10"
-                      />
+                      <Field title="Rating" type="number" name="editRating" />
                       {errors.editRating && touched.editRating && (
                         <ErrorMessage name="editRating">
                           {(errors) => (
@@ -126,7 +130,7 @@ const EditMovie = (props) => {
                     </div>
                     <div>
                       <CustomSelect />
-                      {errors.editGenre && touched.editGenre && (
+                      {errors.addGenre && touched.addGenre && (
                         <ErrorMessage name="editGenre">
                           {(errors) => (
                             <div style={{ color: "yellow", margin: "12px" }}>
@@ -179,6 +183,7 @@ const EditMovie = (props) => {
                     <button
                       className="btns-1"
                       onClick={() => {
+                        dispatch(editMovieByIdAction(null));
                         resetForm();
                       }}
                     >
@@ -188,6 +193,9 @@ const EditMovie = (props) => {
                       type="submit"
                       disabled={isSubmitting}
                       className="btns-2"
+                      onClick={() => {
+                        setDescriptionOpen(false);
+                      }}
                     >
                       submit
                     </button>
@@ -202,6 +210,7 @@ const EditMovie = (props) => {
   );
 };
 const mapStateToProps = (state) => ({
-  movieClicked: state.movieReducer.clickedMovie,
+  // movieClicked: state.movieReducer.clickedMovie,
+  editMovieClicked: state.movieReducer.editMovieState,
 });
 export default connect(mapStateToProps, null)(EditMovie);

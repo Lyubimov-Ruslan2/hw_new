@@ -7,6 +7,7 @@ import EditMovie from "../PopUps/EditMovie";
 import "../Header/infoMovie";
 import ListOfMoviesContext from "../../context";
 import { clickedMovie } from "../../Redux/actions/action";
+import { editMovieByIdAction } from "../../Redux/actions/action";
 
 import { connect } from "react-redux";
 const Movie = ({
@@ -19,7 +20,7 @@ const Movie = ({
   runtime,
   overview,
   movieDispatch,
-  deleteDispatch,
+  editMovieDispatch,
 }) => {
   const [isEditMovieOpen, setEditMovieOpen] = useState(false);
   const [isDeleteMovieOpen, setDeleteMovieOpen] = useState(false);
@@ -46,76 +47,103 @@ const Movie = ({
     }
   }, [isEditMovieOpen, isIconOpen, isDeleteMovieOpen]);
 
-  const handleChangeDescription = () => {
-    movieDispatch({
-      id,
-      title,
-      poster_path,
-      genres,
-      release_date,
-      overview,
-      vote_average,
-      runtime,
-    });
+  const handleChangeDescription = (e) => {
+    if (
+      e.target.textContent === "Delete" ||
+      e.target.textContent === "Edit" ||
+      e.target.textContent === "Confirm"
+    ) {
+      return;
+    } else {
+      movieDispatch({
+        id,
+        title,
+        poster_path,
+        genres,
+        release_date,
+        overview,
+        vote_average,
+        runtime,
+      });
+      editMovieDispatch({
+        id,
+        title,
+        poster_path,
+        genres,
+        release_date,
+        overview,
+        vote_average,
+        runtime,
+      });
 
-    setDescriptionOpen(true);
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+      setDescriptionOpen(true);
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
   };
 
-  const handleEdit = () => {
-    movieDispatch({
-      id,
-      title,
-      poster_path,
-      genres,
-      release_date,
-      overview,
-      vote_average,
-      runtime,
-    });
-  };
+  // const handleEdit = () => {
+  //   movieDispatch({
+  //     id,
+  //     title,
+  //     poster_path,
+  //     genres,
+  //     release_date,
+  //     overview,
+  //     vote_average,
+  //     runtime,
+  //   });
+  // };
 
   return (
-    <div id={id} className="movie-about" onClick={handleChangeDescription}>
-      <img className="img-edit" src={poster_path} />
+    <div>
+      <div id={id} className="movie-about" onClick={handleChangeDescription}>
+        <img className="img-edit" src={poster_path} />
 
-      <div className="about">
-        <p>{title}</p>
-        <button className="btn-about">{release_date.slice(0, 4)}</button>
-      </div>
-      <p className="genre-about">{genres.join(" / ")}</p>
-      <img
-        onClick={handleMovieIcon}
-        className="edit"
-        src={editBtn}
-        alt="edit"
-      />
-      {isIconOpen && (
-        <div className="pops-menu">
-          <button onClick={handleMovieIcon} className="cl">
-            x
-          </button>
-          <p className="first" onClick={handleMovieEdit}>
-            Edit
-          </p>
-
-          <p onClick={handleMovieDelete} className="last">
-            Delete
-          </p>
+        <div className="about">
+          <p>{title}</p>
+          <button className="btn-about">{release_date.slice(0, 4)}</button>
         </div>
+        <p className="genre-about">{genres.join(" / ")}</p>
+        <img
+          onClick={handleMovieIcon}
+          className="edit"
+          src={editBtn}
+          alt="edit"
+        />
+
+        {isIconOpen && (
+          <div className="pops-menu">
+            <button onClick={handleMovieIcon} className="cl">
+              x
+            </button>
+            <p className="first" onClick={handleMovieEdit}>
+              Edit
+            </p>
+
+            <p onClick={handleMovieDelete} className="last">
+              Delete
+            </p>
+          </div>
+        )}
+      </div>
+      {isEditMovieOpen && (
+        <EditMovie
+          onClick={(e) => {
+            console.log(e);
+          }}
+          trigger={isEditMovieOpen}
+          handler={handleMovieEdit}
+          modalclose={setEditMovieOpen}
+        />
       )}
-      <EditMovie
-        onClick={handleEdit}
-        trigger={isEditMovieOpen}
-        handler={handleMovieEdit}
-        title={title}
-      />
-      <DeleteMovie
-        id={id}
-        trigger={isDeleteMovieOpen}
-        handler={handleMovieDelete}
-      />
+      {isDeleteMovieOpen && (
+        <DeleteMovie
+          id={id}
+          trigger={isDeleteMovieOpen}
+          handler={handleMovieDelete}
+        />
+      )}
     </div>
   );
 };
@@ -135,6 +163,7 @@ Movie.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   movieDispatch: (movieData) => dispatch(clickedMovie(movieData)),
+  editMovieDispatch: (data) => dispatch(editMovieByIdAction(data)),
 });
 
 export default connect(null, mapDispatchToProps)(Movie);

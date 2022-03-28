@@ -7,7 +7,6 @@ const MovieContainer = (props) => {
 
   return (
     <>
-      {console.log(movies)}
       <p className="found">{movies.length} movies found</p>
 
       <div className="movie-list">
