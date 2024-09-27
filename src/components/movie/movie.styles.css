@@ -1,0 +1,128 @@
+.about {
+  display: flex;
+  justify-content: space-between;
+  width: 322px;
+  margin-top: 0;
+  height: 28px;
+}
+
+.movie-about {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 19px;
+  line-height: 1px;
+  position: relative;
+  /* identical to box height */
+  margin-right: 0px;
+  color: #ffffff;
+}
+
+.btn-about {
+  width: 66px;
+  height: 26px;
+  mix-blend-mode: normal;
+  opacity: 0.5;
+  border: 1px solid #979797;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: #232323;
+  color: #ffffff;
+}
+
+.genre-about {
+  width: 323px;
+  height: 17px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #ffffff;
+
+  mix-blend-mode: normal;
+  opacity: 0.5;
+}
+
+.img-edit {
+  cursor: pointer;
+  width: 322px;
+  height: 455px;
+  margin-bottom: 22px;
+  position: relative;
+}
+
+.edit {
+  opacity: 0;
+  position: absolute;
+
+  width: 36px;
+  height: 36px;
+  top: 1%;
+  right: 3%;
+  cursor: pointer;
+  z-index: 1;
+  transition: opacity 0.2s linear;
+}
+
+.movie-about:hover .edit {
+  opacity: 1;
+}
+
+.pops-menu {
+  position: absolute;
+  top: 1%;
+  right: 3%;
+  background: rgb(35, 35, 35);
+  width: 150px;
+  height: 80px;
+  z-index: 2;
+  padding: 10px 15px 10px 0px;
+  border-radius: 4px;
+}
+
+.pops-menu .cl {
+  position: absolute;
+  top: 0px;
+  right: 5px;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  transition: transform 0.2s linear;
+}
+
+.pops-menu .cl:active {
+  transform: scale(0.9);
+}
+
+.pops-menu .first,
+.last {
+  padding-left: 15px;
+  padding-right: 0px;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
+  color: #ffffff;
+  margin-bottom: 5px;
+  margin-left: 0px;
+  position: relative;
+  width: 100%;
+  height: 30px;
+}
+
+.pops-menu .first:hover,
+.last:hover {
+  background-color: #f65261;
+}
+
+.pops-menu .last {
+  margin-top: 0px;
+  padding-bottom: 5px;
+}
+
+.pops-menu .first {
+  padding-top: 5px;
+}
